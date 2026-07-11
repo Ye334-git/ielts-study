@@ -2882,11 +2882,25 @@ function _showOnboarding() {
 
   function closeOnboarding() {
     updateState('onboardingDone', true);
+    // Must set pointer-events:none so clicks pass through invisible overlay
+    overlay.style.pointerEvents = 'none';
     overlay.style.opacity = '0';
     overlay.style.transition = 'opacity .3s';
+    // Force remove after transition, with fallback
     setTimeout(function() {
-      if (overlay.parentNode) { overlay.parentNode.removeChild(overlay); }
-    }, 300);
+      try {
+        if (overlay && overlay.parentNode) {
+          overlay.parentNode.removeChild(overlay);
+        }
+      } catch(e) {}
+    }, 350);
+    // Extra safety: ensure removal even if above fails
+    setTimeout(function() {
+      var el = document.getElementById('onboarding-overlay');
+      if (el && el.parentNode) {
+        el.parentNode.removeChild(el);
+      }
+    }, 2000);
   }
 
   box.innerHTML = renderStep(0);
