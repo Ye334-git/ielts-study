@@ -56,6 +56,12 @@
   .w-full{width:100%}
   .max-w-4xl{max-width:896px}
   .mx-auto{margin-left:auto;margin-right:auto}
+  .px-2{padding-left:8px;padding-right:8px}
+  .py-1{padding-top:4px;padding-bottom:4px}
+  .mb-3{margin-bottom:12px}
+  .p-2{padding:8px}
+  .bg-orange-50{background:#fff7ed}
+  .text-orange-600{color:#ea580c}
   .overflow-auto{overflow:auto}
   .relative{position:relative}
   .absolute{position:absolute}
@@ -117,30 +123,7 @@
   }
 </style>
 
-<!-- Tailwind CSS via CDN with fallback -->
-<script id="tailwind-loader">
-(function() {
-  var PRIMARY_CDN = 'https://cdn.tailwindcss.com';
-  var FALLBACK_CDN = 'https://unpkg.com/tailwindcss@3.4.17/dist/tailwind.min.css';
-
-  function loadTailwind(href) {
-    var link = document.createElement('link');
-    link.rel = 'stylesheet';
-    link.href = href;
-    link.onerror = function() {
-      if (href !== FALLBACK_CDN) {
-        console.warn('Primary CDN failed, trying fallback...');
-        loadTailwind(FALLBACK_CDN);
-      } else {
-        console.warn('Both CDNs failed, using inline critical CSS only');
-      }
-    };
-    document.head.appendChild(link);
-  }
-
-  loadTailwind(PRIMARY_CDN);
-})();
-</script>
+<!-- All CSS is inline (critical-css above). No external CDN dependencies. -->
 </head>
 <body>
 
