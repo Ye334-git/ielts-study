@@ -937,31 +937,18 @@ function createCollapsiblePanel(title, contentHTML, defaultOpen) {
   var container = document.createElement('div');
   container.style.cssText = 'border:1px solid #e5e7eb;border-radius:8px;margin-bottom:8px;overflow:hidden';
 
-  var header = document.createElement('div');
-  header.style.cssText = 'display:flex;justify-content:space-between;align-items:center;padding:12px 16px;cursor:pointer;touch-action:manipulation;background:#f9fafb;user-select:none;-webkit-tap-highlight-color:transparent';
-  header.innerHTML = '<span style="font-weight:500;font-size:14px;color:#1f2937">' + title + '</span><span class="panel-arrow" style="transition:transform .2s;display:inline-block">' + ICONS.chevronDown + '</span>';
+  // Use inline onclick so it survives outerHTML conversion
+  var openH = defaultOpen ? '2000px' : '0';
+  var arrowRotate = defaultOpen ? 'rotate(180deg)' : 'rotate(0deg)';
+  container.innerHTML =
+    '<div onclick="var n=this.nextElementSibling,a=this.querySelector(\'.panel-arrow\');if(n.style.maxHeight===\'0px\'||n.style.maxHeight===\'0\'){n.style.maxHeight=\'2000px\';n.style.padding=\'0 16px\';if(a)a.style.transform=\'rotate(180deg)\'}else{n.style.maxHeight=\'0\';n.style.padding=\'0 16px\';if(a)a.style.transform=\'rotate(0deg)\'}" style="display:flex;justify-content:space-between;align-items:center;padding:12px 16px;cursor:pointer;touch-action:manipulation;background:#f9fafb;user-select:none;-webkit-tap-highlight-color:transparent">' +
+    '<span style="font-weight:500;font-size:14px;color:#1f2937">' + title + '</span>' +
+    '<span class="panel-arrow" style="transition:transform .2s;display:inline-block;transform:' + arrowRotate + '">' + ICONS.chevronDown + '</span>' +
+    '</div>' +
+    '<div style="padding:0 16px;max-height:' + openH + ';overflow:hidden;transition:max-height .3s ease,padding .3s ease">' +
+    '<div style="padding:8px 0 16px;font-size:14px;color:#4b5563;line-height:1.7">' + contentHTML + '</div>' +
+    '</div>';
 
-  var body = document.createElement('div');
-  body.style.cssText = 'padding:0 16px;max-height:' + (defaultOpen ? '2000px' : '0') + ';overflow:hidden;transition:max-height .3s ease,padding .3s ease';
-  body.innerHTML = '<div style="padding:8px 0 16px;font-size:14px;color:#4b5563;line-height:1.7">' + contentHTML + '</div>';
-
-  var isOpen = !!defaultOpen;
-  header.addEventListener('click', function() {
-    isOpen = !isOpen;
-    var arrow = header.querySelector('.panel-arrow');
-    if (isOpen) {
-      body.style.maxHeight = '2000px';
-      body.style.padding = '0 16px';
-      arrow.style.transform = 'rotate(180deg)';
-    } else {
-      body.style.maxHeight = '0';
-      body.style.padding = '0 16px';
-      arrow.style.transform = 'rotate(0deg)';
-    }
-  });
-
-  container.appendChild(header);
-  container.appendChild(body);
   return container;
 }
 
