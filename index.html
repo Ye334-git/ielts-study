@@ -389,11 +389,11 @@ var APP = {
     var btnSettings = document.getElementById('btn-settings');
     if (btnSettings) {
       btnSettings.addEventListener('click', function() { self.navigateTo('settings'); });
+      btnSettings.addEventListener('touchend', function(e) {
+        e.preventDefault();
+        self.navigateTo('settings');
+      });
     }
-    btnSettings.addEventListener('touchend', function(e) {
-      e.preventDefault();
-      self.navigateTo('settings');
-    });
   },
 
   navigateTo: function(hash) {
@@ -1669,7 +1669,10 @@ function _makeWeekDays(dayTasks) {
   var week = [];
   for (var d = 0; d < 7; d++) {
     if (d < 5 && dayTasks[d]) {
-      week.push({ tasks: dayTasks[d] });
+      week.push({ tasks: Array.isArray(dayTasks[d]) ? dayTasks[d] : [dayTasks[d]] });
+    } else if (d < 5) {
+      // Days without content — show pending placeholder
+      week.push({ tasks: [{ id: 'pending', type: 'pending', title: '内容更新中' }] });
     } else if (d === 5) {
       week.push({ tasks: [{ id: 'review', type: 'review', title: '本周复习' }] });
     } else {
@@ -2551,17 +2554,27 @@ APP.importProgress = function(base64Str) {
 // Part 22: Global Error Handler
 // ============================================================
 window.onerror = function(message, source, lineNo, colNo, error) {
-  console.error('Global error:', message, 'at', source, 'line', lineNo);
-  // Don't crash — show friendly message
-  var toastEl = document.getElementById('toast-container');
-  if (toastEl) {
-    APP.showToast('出了点小问题，刷新页面试试~', 'error', 5000);
+  var detail = message + ' | line ' + lineNo;
+  console.error('Global error:', detail);
+  // Show visible error on page
+  var errDiv = document.getElementById('js-error-display');
+  if (!errDiv) {
+    errDiv = document.createElement('div');
+    errDiv.id = 'js-error-display';
+    errDiv.style.cssText = 'position:fixed;bottom:60px;left:8px;right:8px;z-index:999;background:#fef2f2;border:2px solid #ef4444;border-radius:8px;padding:10px;font-size:12px;color:#dc2626;max-height:120px;overflow:auto;word-break:break-all';
+    document.body.appendChild(errDiv);
   }
-  return true; // Prevents default error display
+  errDiv.textContent = 'JS Error: ' + detail;
+  errDiv.style.display = 'block';
+  return true;
 };
 
 window.onunhandledrejection = function(event) {
   console.error('Unhandled rejection:', event.reason);
+  var errDiv = document.getElementById('js-error-display');
+  if (errDiv) {
+    errDiv.textContent = (errDiv.textContent || '') + ' | Rejection: ' + (event.reason || '');
+  }
   event.preventDefault();
 };
 
@@ -2921,20 +2934,28 @@ function _rewireCollapsiblePanels(container) {
 // Part 0: Startup — wait for DOMContentLoaded, then init
 // ============================================================
 document.addEventListener('DOMContentLoaded', function() {
-  loadStateFromStorage();
-  APP.init();
-  _updateStreakBadge();
+  try {
+    loadStateFromStorage();
+    APP.init();
+    _updateStreakBadge();
 
-  // Show onboarding on first visit
-  if (!AppState.onboardingDone) {
-    setTimeout(function() { _showOnboarding(); }, 500);
-  }
+    // Show onboarding on first visit
+    if (!AppState.onboardingDone) {
+      setTimeout(function() { _showOnboarding(); }, 500);
+    }
 
-  // Offline warning
-  if (!navigator.onLine) {
-    setTimeout(function() {
-      APP.showToast('当前无网络，部分音频可能无法播放', 'info', 5000);
-    }, 1000);
+    // Offline warning
+    if (!navigator.onLine) {
+      setTimeout(function() {
+        APP.showToast('当前无网络，部分音频可能无法播放', 'info', 5000);
+      }, 1000);
+    }
+  } catch(e) {
+    var errDiv = document.createElement('div');
+    errDiv.style.cssText = 'position:fixed;top:0;left:0;right:0;z-index:9999;background:#dc2626;color:#fff;padding:12px;font-size:13px;text-align:center;word-break:break-all';
+    errDiv.textContent = 'INIT ERROR: ' + e.message + ' (line ' + (e.lineNumber || '?') + ')';
+    document.body.appendChild(errDiv);
+    console.error('Init error:', e);
   }
 });
 </script>
