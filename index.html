@@ -2364,7 +2364,7 @@ function renderSpeaking(subPage, subId) {
 
   // Pronunciation tips
   html += '<h3 style="font-size:18px;font-weight:700;color:#1f2937;margin:20px 0 12px">🗣️ 发音注意事项</h3>';
-  var pron = sp.pronunciation;
+  var pron = sp.parts.pronunciation;
   for (var p = 0; p < pron.length; p++) {
     html += '<div style="background:#fff;border:1px solid #e5e7eb;border-radius:10px;padding:14px;margin-bottom:8px">';
     html += '<div style="font-size:24px;font-weight:700;color:#4F46E5;margin-bottom:4px">' + pron[p].sound + '</div>';
