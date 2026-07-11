@@ -311,7 +311,8 @@ var APP = {
   },
 
   _handleRoute: function() {
-    var hash = location.hash.replace('#', '') || 'home';
+    // Remove '#' and leading '/', then split
+    var hash = location.hash.replace('#', '').replace(/^\//, '') || 'home';
     var parts = hash.split('/');
     var page = parts[0];
     var subPage = parts[1];
@@ -401,15 +402,18 @@ var APP = {
       hash = '#/' + hash;
     }
     location.hash = hash;
+    // DEBUG: update debug bar
+    var dbg = document.getElementById('dbg-hash');
+    if (dbg) dbg.textContent = 'hash: ' + location.hash;
   },
 
   getCurrentPage: function() {
-    var hash = location.hash.replace('#', '') || 'home';
+    var hash = location.hash.replace('#', '').replace(/^\//, '') || 'home';
     return hash.split('/')[0];
   },
 
   getCurrentPageParams: function() {
-    var hash = location.hash.replace('#', '') || 'home';
+    var hash = location.hash.replace('#', '').replace(/^\//, '') || 'home';
     var parts = hash.split('/');
     return {
       page: parts[0],
@@ -2948,15 +2952,37 @@ function _rewireCollapsiblePanels(container) {
 // Part 0: Startup — wait for DOMContentLoaded, then init
 // ============================================================
 document.addEventListener('DOMContentLoaded', function() {
+  // DEBUG: Add visible debug bar
+  var dbg = document.createElement('div');
+  dbg.id = 'debug-bar';
+  dbg.style.cssText = 'position:fixed;top:0;left:0;right:0;z-index:9999;background:#1f2937;color:#10b981;padding:6px 12px;font-size:11px;font-family:monospace;opacity:0.9;display:flex;gap:12px;flex-wrap:wrap';
+  dbg.innerHTML = '<span id="dbg-hash">hash: ' + location.hash + '</span><span id="dbg-page">page: -</span><span id="dbg-click">click: -</span><span id="dbg-app">APP: ' + (typeof APP !== 'undefined' ? 'defined' : 'MISSING') + '</span>';
+  document.body.insertBefore(dbg, document.body.firstChild);
+
+  // DEBUG: Log every click
+  document.addEventListener('click', function(e) {
+    var el = e.target;
+    var tag = el.tagName.toLowerCase();
+    var id = el.id || '';
+    var cls = el.className || '';
+    var onclick = el.getAttribute('onclick') || '';
+    var dbgEl = document.getElementById('dbg-click');
+    if (dbgEl) dbgEl.textContent = 'click: <' + tag + (id ? '#' + id : '') + (onclick ? ' onclick=' + onclick.substring(0, 30) : '') + '>';
+  }, true);
+
   try {
     loadStateFromStorage();
     APP.init();
     _updateStreakBadge();
 
-    // Show onboarding on first visit
-    if (!AppState.onboardingDone) {
-      setTimeout(function() { _showOnboarding(); }, 500);
-    }
+    var dbg2 = document.getElementById('dbg-page');
+    if (dbg2) dbg2.textContent = 'page: ' + APP.getCurrentPage();
+
+    // DEBUG: Skip onboarding to test if it causes click blocking
+    updateState('onboardingDone', true);
+    // if (!AppState.onboardingDone) {
+    //   setTimeout(function() { _showOnboarding(); }, 500);
+    // }
 
     // Offline warning
     if (!navigator.onLine) {
@@ -2966,7 +2992,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   } catch(e) {
     var errDiv = document.createElement('div');
-    errDiv.style.cssText = 'position:fixed;top:0;left:0;right:0;z-index:9999;background:#dc2626;color:#fff;padding:12px;font-size:13px;text-align:center;word-break:break-all';
+    errDiv.style.cssText = 'position:fixed;top:30px;left:0;right:0;z-index:9999;background:#dc2626;color:#fff;padding:12px;font-size:13px;text-align:center;word-break:break-all';
     errDiv.textContent = 'INIT ERROR: ' + e.message + ' (line ' + (e.lineNumber || '?') + ')';
     document.body.appendChild(errDiv);
     console.error('Init error:', e);
