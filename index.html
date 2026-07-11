@@ -1483,7 +1483,7 @@ function renderListening(subPage, subId) {
                 html += '<div style="font-size:12px;color:#9ca3af;font-style:italic;margin-top:4px">' + w.example + '</div>';
               }
               html += '</div>';
-              html += '<div id="audio-listening-' + wordId + '" style="flex-shrink:0"></div>';
+              html += '<div class="audio-btn" data-word="' + w.en.replace(/"/g, '&quot;') + '" style="flex-shrink:0"></div>';
               html += '</div></div>';
             }
             html += '</div></div>';
@@ -1495,7 +1495,7 @@ function renderListening(subPage, subId) {
               html += '<div style="background:#fff;border:1px solid #e5e7eb;border-radius:10px;padding:12px;margin-bottom:8px">';
               html += '<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px">';
               html += '<span style="font-size:14px;color:#1f2937">📝 ' + s.zh + '</span>';
-              html += '<div id="dict-audio-' + si + '" style="flex-shrink:0"></div>';
+              html += '<div class="audio-btn" data-word="' + s.text.replace(/"/g, '&quot;') + '" style="flex-shrink:0"></div>';
               html += '</div>';
               html += '<input type="text" placeholder="输入你听到的句子..." style="width:100%;padding:8px 12px;border:1px solid #d1d5db;border-radius:8px;font-size:14px;outline:none" data-answer="' + s.text.replace(/"/g, '&quot;') + '">';
               html += '<button class="dict-check-btn" style="margin-top:6px;padding:6px 16px;border:none;border-radius:6px;background:#4F46E5;color:#fff;font-size:13px;cursor:pointer;touch-action:manipulation">检查</button>';
@@ -1635,47 +1635,10 @@ function renderListening(subPage, subId) {
   // Attach audio buttons (deferred after DOM settle)
   setTimeout(function() {
     AudioSystem.init();
-    // Attach audio buttons for word cards
-    var audioPlaceholders = container.querySelectorAll('[id^="audio-listening-"]');
-    for (var ap = 0; ap < audioPlaceholders.length; ap++) {
-      var wordText = audioPlaceholders[ap].id.replace('audio-listening-', '');
-      // Look up actual word from content
-      var weekData = _getWeekContent('listening', weekNum);
-      if (weekData) {
-        for (var d3 = 1; d3 <= 7; d3++) {
-          var dayD = weekData.days[d3 - 1];
-          if (dayD && dayD.tasks) {
-            for (var t2 = 0; t2 < dayD.tasks.length; t2++) {
-              if (dayD.tasks[t2].words) {
-                for (var wi2 = 0; wi2 < dayD.tasks[t2].words.length; wi2++) {
-                  var wd = dayD.tasks[t2].words[wi2];
-                  if (wd.en.replace(/[^a-zA-Z]/g, '') === wordText) {
-                    audioPlaceholders[ap].appendChild(createAudioButton(wd.en));
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-    // Attach audio buttons for dictation
-    var dictAudios = container.querySelectorAll('[id^="dict-audio-"]');
-    for (var da = 0; da < dictAudios.length; da++) {
-      var sentenceIdx = parseInt(dictAudios[da].id.replace('dict-audio-', ''), 10);
-      var weekData2 = _getWeekContent('listening', weekNum);
-      if (weekData2) {
-        for (var d4 = 1; d4 <= 7; d4++) {
-          var dayD2 = weekData2.days[d4 - 1];
-          if (dayD2 && dayD2.tasks) {
-            for (var t3 = 0; t3 < dayD2.tasks.length; t3++) {
-              if (dayD2.tasks[t3].sentences && dayD2.tasks[t3].sentences[sentenceIdx]) {
-                dictAudios[da].appendChild(createAudioButton(dayD2.tasks[t3].sentences[sentenceIdx].text));
-              }
-            }
-          }
-        }
-      }
+    var btns = container.querySelectorAll('.audio-btn');
+    for (var i = 0; i < btns.length; i++) {
+      var w = btns[i].getAttribute('data-word');
+      if (w) btns[i].appendChild(createAudioButton(w));
     }
   }, 100);
 }
@@ -1735,7 +1698,7 @@ function renderReading(subPage, subId) {
               html += '<div style="background:#fff;border:1px solid #e5e7eb;border-radius:10px;padding:12px">';
               html += '<div style="display:flex;justify-content:space-between;align-items:flex-start">';
               html += '<div><div style="font-size:16px;font-weight:600;color:#1f2937">' + w.en + '</div><div style="font-size:12px;color:#9ca3af">' + (w.phonetic || '') + '</div><div style="font-size:13px;color:#6b7280">' + w.zh + '</div></div>';
-              html += '<div id="audio-reading-' + w.en.replace(/[^a-zA-Z]/g, '') + '"></div>';
+              html += '<div class="audio-btn" data-word="' + w.en.replace(/"/g, '&quot;') + '" style="flex-shrink:0"></div>';
               html += '</div></div>';
             }
             html += '</div>';
@@ -1837,26 +1800,10 @@ function renderReading(subPage, subId) {
   // Audio buttons
   setTimeout(function() {
     AudioSystem.init();
-    var audioPs = container.querySelectorAll('[id^="audio-reading-"]');
-    for (var ap = 0; ap < audioPs.length; ap++) {
-      var wText = audioPs[ap].id.replace('audio-reading-', '');
-      var wData = _getWeekContent('reading', weekNum);
-      if (wData) {
-        for (var d3 = 1; d3 <= 7; d3++) {
-          var dd = wData.days[d3-1];
-          if (dd && dd.tasks) {
-            for (var t2 = 0; t2 < dd.tasks.length; t2++) {
-              if (dd.tasks[t2].words) {
-                for (var wi2 = 0; wi2 < dd.tasks[t2].words.length; wi2++) {
-                  if (dd.tasks[t2].words[wi2].en.replace(/[^a-zA-Z]/g, '') === wText) {
-                    audioPs[ap].appendChild(createAudioButton(dd.tasks[t2].words[wi2].en));
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
+    var btns = container.querySelectorAll('.audio-btn');
+    for (var i = 0; i < btns.length; i++) {
+      var w = btns[i].getAttribute('data-word');
+      if (w) btns[i].appendChild(createAudioButton(w));
     }
   }, 100);
 }
@@ -1918,7 +1865,7 @@ function renderWriting(subPage, subId) {
               var w = task.words[wi];
               html += '<div style="background:#fff;border:1px solid #e5e7eb;border-radius:8px;padding:10px 14px;margin-bottom:6px;display:flex;justify-content:space-between;align-items:center">';
               html += '<div><span style="font-weight:600;color:#1f2937">' + w.en + '</span>' + (w.phonetic ? '<span style="font-size:12px;color:#9ca3af;margin-left:8px">' + w.phonetic + '</span>' : '') + '<span style="font-size:13px;color:#6b7280;margin-left:8px">' + w.zh + '</span></div>';
-              html += '<div id="audio-writing-' + w.en.replace(/[^a-zA-Z]/g, '') + '"></div>';
+              html += '<div class="audio-btn" data-word="' + w.en.replace(/"/g, '&quot;') + '" style="flex-shrink:0"></div>';
               html += '</div>';
             }
           } else if (task.type) {
@@ -1999,26 +1946,10 @@ function renderWriting(subPage, subId) {
 
   setTimeout(function() {
     AudioSystem.init();
-    var audioPs = container.querySelectorAll('[id^="audio-writing-"]');
-    for (var ap = 0; ap < audioPs.length; ap++) {
-      var wText = audioPs[ap].id.replace('audio-writing-', '');
-      var wData = _getWeekContent('writing', weekNum);
-      if (wData) {
-        for (var d3 = 1; d3 <= 7; d3++) {
-          var dd = wData.days[d3-1];
-          if (dd && dd.tasks) {
-            for (var t2 = 0; t2 < dd.tasks.length; t2++) {
-              if (dd.tasks[t2].words) {
-                for (var wi2 = 0; wi2 < dd.tasks[t2].words.length; wi2++) {
-                  if (dd.tasks[t2].words[wi2].en.replace(/[^a-zA-Z]/g, '') === wText) {
-                    audioPs[ap].appendChild(createAudioButton(dd.tasks[t2].words[wi2].en));
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
+    var btns = container.querySelectorAll('.audio-btn');
+    for (var i = 0; i < btns.length; i++) {
+      var w = btns[i].getAttribute('data-word');
+      if (w) btns[i].appendChild(createAudioButton(w));
     }
   }, 100);
 }
@@ -2133,7 +2064,7 @@ function renderSpeaking(subPage, subId) {
               html += '<div style="background:#fff;border:1px solid #e5e7eb;border-radius:10px;padding:12px">';
               html += '<div style="display:flex;justify-content:space-between;align-items:flex-start">';
               html += '<div><div style="font-size:16px;font-weight:600;color:#1f2937">' + w.en + '</div><div style="font-size:12px;color:#9ca3af">' + (w.phonetic || '') + '</div><div style="font-size:13px;color:#6b7280">' + w.zh + '</div></div>';
-              html += '<div id="audio-speaking-' + w.en.replace(/[^a-zA-Z]/g, '') + '"></div>';
+              html += '<div class="audio-btn" data-word="' + w.en.replace(/"/g, '&quot;') + '" style="flex-shrink:0"></div>';
               html += '</div></div>';
             }
             html += '</div>';
@@ -2207,33 +2138,13 @@ function renderSpeaking(subPage, subId) {
     });
   }
 
-  // Re-attach collapsible panel behaviors since we used outerHTML
+  // Wire up audio buttons
   setTimeout(function() {
-    var panels = container.querySelectorAll('[style*="border:1px solid #e5e7eb;border-radius:8px"]');
-    // Add click handlers for expandable sections
-    var clickableHeaders = container.querySelectorAll('[style*="cursor:pointer"]');
-    // Simplified: just wire up audio buttons
     AudioSystem.init();
-    var audioPs = container.querySelectorAll('[id^="audio-speaking-"]');
-    for (var ap = 0; ap < audioPs.length; ap++) {
-      var wText = audioPs[ap].id.replace('audio-speaking-', '');
-      var wData = _getWeekContent('speaking', weekNum);
-      if (wData) {
-        for (var d3 = 1; d3 <= 7; d3++) {
-          var dd = wData.days[d3-1];
-          if (dd && dd.tasks) {
-            for (var t2 = 0; t2 < dd.tasks.length; t2++) {
-              if (dd.tasks[t2].words) {
-                for (var wi2 = 0; wi2 < dd.tasks[t2].words.length; wi2++) {
-                  if (dd.tasks[t2].words[wi2].en.replace(/[^a-zA-Z]/g, '') === wText) {
-                    audioPs[ap].appendChild(createAudioButton(dd.tasks[t2].words[wi2].en));
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
+    var btns = container.querySelectorAll('.audio-btn');
+    for (var i = 0; i < btns.length; i++) {
+      var w = btns[i].getAttribute('data-word');
+      if (w) btns[i].appendChild(createAudioButton(w));
     }
   }, 100);
 }
