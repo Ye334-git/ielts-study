@@ -1,0 +1,2960 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="renderer" content="webkit">
+<meta name="x5-fullscreen" content="true">
+<meta name="x5-page-translation" content="none">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="format-detection" content="telephone=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<title>雅思备考助手 - 8周学习计划</title>
+
+<!-- Critical inline CSS (fallback when Tailwind fails to load) -->
+<style id="critical-css">
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  html,body{height:100%;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"PingFang SC","Microsoft YaHei","Hiragino Sans GB",sans-serif;font-size:16px;line-height:1.5;color:#1f2937;background:#f9fafb;-webkit-text-size-adjust:100%}
+  #app{min-height:100%;display:flex;flex-direction:column}
+  .hidden{display:none!important}
+  .flex{display:flex}
+  .flex-col{flex-direction:column}
+  .flex-1{flex:1 1 0%}
+  .items-center{align-items:center}
+  .justify-center{justify-content:center}
+  .justify-between{justify-content:space-between}
+  .gap-2{gap:8px}
+  .gap-4{gap:16px}
+  .p-4{padding:16px}
+  .px-4{padding-left:16px;padding-right:16px}
+  .py-2{padding-top:8px;padding-bottom:8px}
+  .py-3{padding-top:12px;padding-bottom:12px}
+  .mb-4{margin-bottom:16px}
+  .mt-2{margin-top:8px}
+  .rounded-lg{border-radius:12px}
+  .rounded-full{border-radius:9999px}
+  .bg-white{background:#fff}
+  .bg-indigo-600{background:#4f46e5}
+  .bg-green-500{background:#10b981}
+  .bg-gray-100{background:#f3f4f6}
+  .bg-gray-50{background:#f9fafb}
+  .text-white{color:#fff}
+  .text-gray-500{color:#6b7280}
+  .text-gray-600{color:#4b5563}
+  .text-gray-700{color:#374151}
+  .text-gray-900{color:#111827}
+  .text-sm{font-size:14px}
+  .text-xs{font-size:12px}
+  .text-lg{font-size:18px}
+  .text-xl{font-size:20px}
+  .text-2xl{font-size:24px}
+  .font-bold{font-weight:700}
+  .font-medium{font-weight:500}
+  .text-center{text-align:center}
+  .shadow{box-shadow:0 1px 3px rgba(0,0,0,.1),0 1px 2px rgba(0,0,0,.06)}
+  .shadow-sm{box-shadow:0 1px 2px rgba(0,0,0,.05)}
+  .w-full{width:100%}
+  .max-w-4xl{max-width:896px}
+  .mx-auto{margin-left:auto;margin-right:auto}
+  .overflow-auto{overflow:auto}
+  .relative{position:relative}
+  .absolute{position:absolute}
+  .fixed{position:fixed}
+  .bottom-0{bottom:0}
+  .left-0{left:0}
+  .right-0{right:0}
+  .top-0{top:0}
+  .z-10{z-index:10}
+  .z-50{z-index:50}
+  .overflow-hidden{overflow:hidden}
+  .truncate{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .cursor-pointer{cursor:pointer}
+  .transition{transition:all .2s ease}
+  .grid{display:grid}
+  .grid-cols-2{grid-template-columns:repeat(2,1fr)}
+  .grid-cols-4{grid-template-columns:repeat(4,1fr)}
+  .border{border:1px solid #e5e7eb}
+  .border-t{border-top:1px solid #e5e7eb}
+  .border-b{border-bottom:1px solid #e5e7eb}
+
+  /* Page sections */
+  [data-page]{display:none}
+  [data-page].active{display:block}
+
+  /* Top nav */
+  #top-nav{position:sticky;top:0;z-index:40;background:#fff;border-bottom:1px solid #e5e7eb;padding:12px 16px;display:flex;align-items:center;justify-content:space-between}
+
+  /* Bottom tab bar */
+  #bottom-tab-bar{position:fixed;bottom:0;left:0;right:0;z-index:40;background:#fff;border-top:1px solid #e5e7eb;display:flex;justify-content:space-around;padding:6px 0 env(safe-area-inset-bottom,0)}
+  .tab-item{display:flex;flex-direction:column;align-items:center;gap:2px;padding:6px 0;color:#9ca3af;cursor:pointer;transition:color .2s;min-width:56px;-webkit-tap-highlight-color:transparent;touch-action:manipulation}
+  .tab-item.active{color:#4f46e5}
+  .tab-item svg{width:24px;height:24px}
+  .tab-item span{font-size:10px;line-height:1}
+
+  /* Main content area */
+  #main-content{flex:1;padding-bottom:70px;overflow-y:auto}
+
+  /* Toast */
+  .toast{position:fixed;top:16px;left:50%;transform:translateX(-50%);z-index:100;padding:12px 20px;border-radius:8px;color:#fff;font-size:14px;box-shadow:0 4px 12px rgba(0,0,0,.15);animation:toastIn .3s ease;max-width:90vw}
+  .toast-success{background:#10b981}
+  .toast-error{background:#ef4444}
+  .toast-info{background:#3b82f6}
+  .toast-encourage{background:#8b5cf6}
+  @keyframes toastIn{from{opacity:0;transform:translateX(-50%) translateY(-20px)}to{opacity:1;transform:translateX(-50%) translateY(0)}}
+
+  /* Modal overlay */
+  .modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:90;display:flex;align-items:center;justify-content:center;padding:16px}
+  .modal-box{background:#fff;border-radius:16px;padding:24px;max-width:420px;width:100%;box-shadow:0 20px 60px rgba(0,0,0,.2);animation:modalIn .2s ease}
+  @keyframes modalIn{from{opacity:0;transform:scale(.95)}to{opacity:1;transform:scale(1)}}
+
+  /* Responsive */
+  @media (min-width:768px) {
+    #bottom-tab-bar{position:fixed;left:0;top:60px;bottom:0;width:200px;flex-direction:column;justify-content:flex-start;gap:4px;padding:12px;border-right:1px solid #e5e7eb;border-top:none}
+    .tab-item{flex-direction:row;gap:12px;padding:10px 12px;border-radius:8px;width:100%;justify-content:flex-start}
+    .tab-item span{font-size:14px}
+    #main-content{margin-left:200px;padding-bottom:0}
+    #top-nav{padding-left:216px}
+  }
+</style>
+
+<!-- Tailwind CSS via CDN with fallback -->
+<script id="tailwind-loader">
+(function() {
+  var PRIMARY_CDN = 'https://cdn.tailwindcss.com';
+  var FALLBACK_CDN = 'https://unpkg.com/tailwindcss@3.4.17/dist/tailwind.min.css';
+
+  function loadTailwind(href) {
+    var link = document.createElement('link');
+    link.rel = 'stylesheet';
+    link.href = href;
+    link.onerror = function() {
+      if (href !== FALLBACK_CDN) {
+        console.warn('Primary CDN failed, trying fallback...');
+        loadTailwind(FALLBACK_CDN);
+      } else {
+        console.warn('Both CDNs failed, using inline critical CSS only');
+      }
+    };
+    document.head.appendChild(link);
+  }
+
+  loadTailwind(PRIMARY_CDN);
+})();
+</script>
+</head>
+<body>
+
+<div id="app">
+  <!-- Top Navigation -->
+  <header id="top-nav">
+    <div class="flex items-center gap-2">
+      <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+        <rect width="32" height="32" rx="8" fill="#4F46E5"/>
+        <text x="16" y="21" text-anchor="middle" fill="white" font-size="16" font-weight="700">I</text>
+      </svg>
+      <span id="top-nav-title" class="font-bold" style="font-size:18px;color:#1f2937">雅思备考</span>
+    </div>
+    <div class="flex items-center gap-2">
+      <div id="streak-badge" class="flex items-center gap-1 px-2 py-1 rounded-full bg-orange-50 text-orange-600" style="font-size:13px;display:none">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 15l-4-4 1.41-1.41L11 14.17l5.59-5.59L18 10l-7 7z"/></svg>
+        <span id="streak-number">0</span>天
+      </div>
+      <button id="btn-settings" class="p-2 rounded-full bg-gray-100 cursor-pointer" style="border:none;transition:background .2s" aria-label="设置">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#6b7280" stroke-width="2">
+          <circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/>
+        </svg>
+      </button>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main id="main-content">
+    <!-- Home Page -->
+    <section data-page="home" class="active p-4 max-w-4xl mx-auto">
+      <div class="mb-4">
+        <h2 class="text-2xl font-bold" style="color:#1f2937;margin-bottom:4px">雅思备考助手</h2>
+        <p style="color:#6b7280;font-size:14px">8周系统备考计划 · 听说读写全覆盖</p>
+      </div>
+      <!-- Overall progress -->
+      <div id="home-overall-progress" class="bg-white rounded-lg shadow-sm p-4 mb-4 text-center">
+        <p style="color:#6b7280;font-size:14px">加载中...</p>
+      </div>
+      <!-- Module progress bars -->
+      <div id="home-module-progress" class="grid grid-cols-2 gap-2 mb-4">
+      </div>
+      <!-- Week timeline -->
+      <div id="home-week-timeline" class="bg-white rounded-lg shadow-sm p-4 mb-4">
+        <h3 class="font-bold mb-3" style="font-size:16px;color:#1f2937">学习进度</h3>
+        <div id="week-timeline-placeholder" style="color:#6b7280;font-size:14px">加载中...</div>
+      </div>
+      <!-- Daily tasks -->
+      <div id="home-daily-tasks" class="bg-white rounded-lg shadow-sm p-4">
+        <h3 class="font-bold mb-3" style="font-size:16px;color:#1f2937">今日任务</h3>
+        <div id="daily-tasks-placeholder" style="color:#6b7280;font-size:14px">加载中...</div>
+      </div>
+    </section>
+
+    <!-- Listening Page -->
+    <section data-page="listening" class="p-4 max-w-4xl mx-auto">
+      <div class="mb-4">
+        <h2 class="text-2xl font-bold" style="color:#1f2937">🎧 听力</h2>
+        <p style="color:#6b7280;font-size:14px">王陆语料库 · 精听训练 · 题型技巧</p>
+      </div>
+      <div id="listening-content"><p style="color:#6b7280">加载中...</p></div>
+    </section>
+
+    <!-- Reading Page -->
+    <section data-page="reading" class="p-4 max-w-4xl mx-auto">
+      <div class="mb-4">
+        <h2 class="text-2xl font-bold" style="color:#1f2937">📖 阅读</h2>
+        <p style="color:#6b7280;font-size:14px">高频词汇 · 长难句 · 题型技巧</p>
+      </div>
+      <div id="reading-content"><p style="color:#6b7280">加载中...</p></div>
+    </section>
+
+    <!-- Writing Page -->
+    <section data-page="writing" class="p-4 max-w-4xl mx-auto">
+      <div class="mb-4">
+        <h2 class="text-2xl font-bold" style="color:#1f2937">✍️ 写作</h2>
+        <p style="color:#6b7280;font-size:14px">Task 1 图表 · Task 2 议论文 · 高分表达</p>
+      </div>
+      <div id="writing-content"><p style="color:#6b7280">加载中...</p></div>
+    </section>
+
+    <!-- Speaking Page -->
+    <section data-page="speaking" class="p-4 max-w-4xl mx-auto">
+      <div class="mb-4">
+        <h2 class="text-2xl font-bold" style="color:#1f2937">💬 口语</h2>
+        <p style="color:#6b7280;font-size:14px">Part 1-3 · 示范回答 · 发音技巧</p>
+      </div>
+      <div id="speaking-content"><p style="color:#6b7280">加载中...</p></div>
+    </section>
+
+    <!-- Settings Page -->
+    <section data-page="settings" class="p-4 max-w-4xl mx-auto">
+      <div class="mb-4">
+        <h2 class="text-2xl font-bold" style="color:#1f2937">⚙️ 设置</h2>
+      </div>
+      <div id="settings-content"><p style="color:#6b7280">加载中...</p></div>
+    </section>
+
+    <!-- FAQ Page -->
+    <section data-page="faq" class="p-4 max-w-4xl mx-auto">
+      <div class="mb-4">
+        <h2 class="text-2xl font-bold" style="color:#1f2937">❓ 常见问题</h2>
+      </div>
+      <div id="faq-content"><p style="color:#6b7280">加载中...</p></div>
+    </section>
+  </main>
+
+  <!-- Bottom Tab Bar -->
+  <nav id="bottom-tab-bar">
+    <div class="tab-item active" data-tab="home" onclick="APP.navigateTo('home')">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+        <polyline points="9 22 9 12 15 12 15 22"/>
+      </svg>
+      <span>首页</span>
+    </div>
+    <div class="tab-item" data-tab="listening" onclick="APP.navigateTo('listening')">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M3 18v-6a9 9 0 0 1 18 0v6"/>
+        <path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"/>
+      </svg>
+      <span>听力</span>
+    </div>
+    <div class="tab-item" data-tab="reading" onclick="APP.navigateTo('reading')">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
+        <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
+      </svg>
+      <span>阅读</span>
+    </div>
+    <div class="tab-item" data-tab="writing" onclick="APP.navigateTo('writing')">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/>
+        <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/>
+      </svg>
+      <span>写作</span>
+    </div>
+    <div class="tab-item" data-tab="speaking" onclick="APP.navigateTo('speaking')">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/>
+        <path d="M19 10v2a7 7 0 0 1-14 0v-2"/>
+        <line x1="12" y1="19" x2="12" y2="23"/>
+        <line x1="8" y1="23" x2="16" y2="23"/>
+      </svg>
+      <span>口语</span>
+    </div>
+  </nav>
+
+  <!-- Toast Container -->
+  <div id="toast-container"></div>
+
+  <!-- Modal Container -->
+  <div id="modal-container"></div>
+</div>
+
+<script>
+// ============================================================
+// Part 1: Polyfills & Feature Detection
+// ============================================================
+(function() {
+  // Detect Web Speech API support
+  window._FEATURES = {
+    speechSynthesis: (
+      typeof SpeechSynthesisUtterance !== 'undefined' &&
+      'speechSynthesis' in window &&
+      window.speechSynthesis !== null
+    ),
+    online: navigator.onLine,
+    touchDevice: ('ontouchstart' in window) || (navigator.maxTouchPoints > 0)
+  };
+})();
+
+// ============================================================
+// Part 2: Router
+// ============================================================
+var APP = {
+  _routeHandlers: {},
+
+  init: function() {
+    var self = this;
+    window.addEventListener('hashchange', function() { self._handleRoute(); });
+    // Initial route
+    if (!location.hash) { location.hash = '#/home'; }
+    self._handleRoute();
+    self._bindNavButtons();
+  },
+
+  _handleRoute: function() {
+    var hash = location.hash.replace('#', '') || 'home';
+    var parts = hash.split('/');
+    var page = parts[0];
+    var subPage = parts[1];
+    var subId = parts[2];
+
+    // Hide all page sections
+    var sections = document.querySelectorAll('[data-page]');
+    for (var i = 0; i < sections.length; i++) {
+      sections[i].style.display = 'none';
+      sections[i].classList.remove('active');
+    }
+
+    // Show target page
+    var target = document.querySelector('[data-page="' + page + '"]');
+    if (!target) {
+      location.hash = '#/home';
+      return;
+    }
+    target.style.display = 'block';
+    target.classList.add('active');
+
+    // Update active tab
+    this._updateActiveTab(page);
+
+    // Update title
+    this._updateTitle(page);
+
+    // Call handler
+    if (this._routeHandlers[page]) {
+      this._routeHandlers[page](subPage, subId);
+    }
+
+    // Scroll to top
+    window.scrollTo(0, 0);
+  },
+
+  _updateActiveTab: function(page) {
+    var tabMapping = {
+      'home': 'home',
+      'listening': 'listening',
+      'reading': 'reading',
+      'writing': 'writing',
+      'speaking': 'speaking',
+      'settings': null,
+      'faq': null
+    };
+    var activeTab = tabMapping[page];
+    var items = document.querySelectorAll('#bottom-tab-bar .tab-item');
+    for (var i = 0; i < items.length; i++) {
+      var tab = items[i].getAttribute('data-tab');
+      if (tab === activeTab) {
+        items[i].classList.add('active');
+      } else {
+        items[i].classList.remove('active');
+      }
+    }
+  },
+
+  _updateTitle: function(page) {
+    var titles = {
+      'home': '雅思备考',
+      'listening': '听力',
+      'reading': '阅读',
+      'writing': '写作',
+      'speaking': '口语',
+      'settings': '设置',
+      'faq': '常见问题'
+    };
+    var titleEl = document.getElementById('top-nav-title');
+    if (titleEl) { titleEl.textContent = titles[page] || '雅思备考'; }
+  },
+
+  _bindNavButtons: function() {
+    var self = this;
+    var btnSettings = document.getElementById('btn-settings');
+    if (btnSettings) {
+      btnSettings.addEventListener('click', function() { self.navigateTo('settings'); });
+    }
+    btnSettings.addEventListener('touchend', function(e) {
+      e.preventDefault();
+      self.navigateTo('settings');
+    });
+  },
+
+  navigateTo: function(hash) {
+    if (hash.indexOf('#/') !== 0) {
+      hash = '#/' + hash;
+    }
+    location.hash = hash;
+  },
+
+  getCurrentPage: function() {
+    var hash = location.hash.replace('#', '') || 'home';
+    return hash.split('/')[0];
+  },
+
+  getCurrentPageParams: function() {
+    var hash = location.hash.replace('#', '') || 'home';
+    var parts = hash.split('/');
+    return {
+      page: parts[0],
+      subPage: parts[1],
+      subId: parts[2]
+    };
+  },
+
+  onRoute: function(page, handler) {
+    this._routeHandlers[page] = handler;
+  }
+};
+
+// ============================================================
+// Part 3: Storage Engine
+// ============================================================
+var Storage = {
+  PREFIX: 'ielts_study_v1_',
+  _persistTimer: null,
+  _persistDebounceMs: 300,
+
+  save: function(key, data) {
+    try {
+      var payload = JSON.stringify({
+        data: data,
+        timestamp: Date.now(),
+        version: 1
+      });
+      if (payload.length > 500000) {
+        APP.showToast('数据较大，建议导出备份', 'info', 5000);
+      }
+      localStorage.setItem(this.PREFIX + key, payload);
+      return true;
+    } catch(e) {
+      if (e.name === 'QuotaExceededError' || e.number === -2147024882) {
+        APP.showToast('存储空间不足，请导出备份后重置', 'error', 8000);
+      } else {
+        console.error('Storage.save error:', e);
+      }
+      return false;
+    }
+  },
+
+  load: function(key, defaultValue) {
+    try {
+      var raw = localStorage.getItem(this.PREFIX + key);
+      if (!raw) return defaultValue;
+      var parsed = JSON.parse(raw);
+      return parsed.data !== undefined ? parsed.data : defaultValue;
+    } catch(e) {
+      console.error('Storage.load error:', e);
+      return defaultValue;
+    }
+  },
+
+  remove: function(key) {
+    try { localStorage.removeItem(this.PREFIX + key); } catch(e) {}
+  },
+
+  clear: function() {
+    try {
+      var keysToRemove = [];
+      for (var i = 0; i < localStorage.length; i++) {
+        var k = localStorage.key(i);
+        if (k && k.indexOf(this.PREFIX) === 0) {
+          keysToRemove.push(k);
+        }
+      }
+      for (var j = 0; j < keysToRemove.length; j++) {
+        localStorage.removeItem(keysToRemove[j]);
+      }
+    } catch(e) {
+      console.error('Storage.clear error:', e);
+    }
+  }
+};
+
+// ============================================================
+// Part 4: State Management
+// ============================================================
+var DEFAULT_STATE = {
+  currentWeek: 1,
+  currentDay: 1,
+  completedItems: '',
+  masteredWords: { listening: '', reading: '', writing: '', speaking: '' },
+  wrongWords: [],
+  unlockedWeeks: [1],
+  stats: {
+    studyDays: 0,
+    lastStudyDate: null,
+    streakDays: 0,
+    totalCompletions: 0
+  },
+  settings: {
+    audioSpeed: 1.0,
+    autoNext: true,
+    audioEnabled: true
+  },
+  version: 1,
+  lastExportPrompt: null,
+  onboardingDone: false
+};
+
+var AppState = null;
+
+function loadStateFromStorage() {
+  var saved = Storage.load('state', null);
+  if (saved && saved.version) {
+    AppState = saved;
+    // Migration: ensure all fields exist
+    _migrateState();
+  } else {
+    AppState = JSON.parse(JSON.stringify(DEFAULT_STATE));
+  }
+  _updateStreak();
+}
+
+function _migrateState() {
+  var defaults = DEFAULT_STATE;
+  var changed = false;
+  // Add missing top-level keys
+  for (var key in defaults) {
+    if (defaults.hasOwnProperty(key) && AppState[key] === undefined) {
+      AppState[key] = JSON.parse(JSON.stringify(defaults[key]));
+      changed = true;
+    }
+  }
+  // Add missing stats keys
+  for (var sk in defaults.stats) {
+    if (defaults.stats.hasOwnProperty(sk) && AppState.stats[sk] === undefined) {
+      AppState.stats[sk] = defaults.stats[sk];
+      changed = true;
+    }
+  }
+  // Add missing settings keys
+  for (var ck in defaults.settings) {
+    if (defaults.settings.hasOwnProperty(ck) && AppState.settings[ck] === undefined) {
+      AppState.settings[ck] = defaults.settings[ck];
+      changed = true;
+    }
+  }
+  // Add missing masteredWords keys
+  for (var mk in defaults.masteredWords) {
+    if (defaults.masteredWords.hasOwnProperty(mk) && AppState.masteredWords[mk] === undefined) {
+      AppState.masteredWords[mk] = '';
+      changed = true;
+    }
+  }
+  if (changed) {
+    schedulePersist();
+  }
+}
+
+function updateState(path, value) {
+  var parts = path.split('.');
+  var target = AppState;
+  for (var i = 0; i < parts.length - 1; i++) {
+    if (target[parts[i]] === undefined) return false;
+    target = target[parts[i]];
+  }
+  var lastKey = parts[parts.length - 1];
+  if (target[lastKey] !== value) {
+    target[lastKey] = value;
+    schedulePersist();
+    _notifyStateChange(path);
+  }
+  return true;
+}
+
+function _notifyStateChange(path) {
+  // Re-render affected UI sections
+  var page = APP.getCurrentPage();
+  if (page === 'home') {
+    _refreshHomeProgress();
+  }
+  _updateStreakBadge();
+}
+
+function schedulePersist() {
+  if (Storage._persistTimer) {
+    clearTimeout(Storage._persistTimer);
+  }
+  Storage._persistTimer = setTimeout(function() {
+    Storage.save('state', AppState);
+    Storage._persistTimer = null;
+  }, Storage._persistDebounceMs);
+}
+
+function _updateStreak() {
+  var today = _getDateString();
+  var lastDate = AppState.stats.lastStudyDate;
+  if (lastDate === today) return;
+  var yesterday = _getDateString(new Date(Date.now() - 86400000));
+  if (lastDate === yesterday) {
+    AppState.stats.streakDays = (AppState.stats.streakDays || 0) + 1;
+  } else if (lastDate !== today) {
+    AppState.stats.streakDays = 1;
+  }
+  AppState.stats.lastStudyDate = today;
+  AppState.stats.studyDays = (AppState.stats.studyDays || 0) + 1;
+  schedulePersist();
+}
+
+function _getDateString(date) {
+  var d = date || new Date();
+  var month = d.getMonth() + 1;
+  var day = d.getDate();
+  return d.getFullYear() + '-' + (month < 10 ? '0' : '') + month + '-' + (day < 10 ? '0' : '') + day;
+}
+
+// ============================================================
+// Part 5: Toast System
+// ============================================================
+APP.showToast = function(message, type, duration) {
+  if (!type) type = 'info';
+  if (!duration) duration = 3000;
+  var container = document.getElementById('toast-container');
+  var toast = document.createElement('div');
+  toast.className = 'toast toast-' + type;
+  toast.textContent = message;
+  container.appendChild(toast);
+  setTimeout(function() {
+    if (toast.parentNode) {
+      toast.style.opacity = '0';
+      toast.style.transition = 'opacity .2s';
+      setTimeout(function() {
+        if (toast.parentNode) { toast.parentNode.removeChild(toast); }
+      }, 200);
+    }
+  }, duration);
+};
+
+// ============================================================
+// Part 6: Modal System
+// ============================================================
+APP.showModal = function(title, content, options) {
+  var opt = options || {};
+  var container = document.getElementById('modal-container');
+  var overlay = document.createElement('div');
+  overlay.className = 'modal-overlay';
+
+  var box = document.createElement('div');
+  box.className = 'modal-box';
+
+  var html = '';
+  html += '<h3 style="margin-bottom:12px;font-size:18px;font-weight:700;color:#1f2937">' + title + '</h3>';
+  html += '<div style="margin-bottom:16px;font-size:14px;color:#4b5563">' + content + '</div>';
+  html += '<div style="display:flex;gap:8px;justify-content:flex-end">';
+  if (opt.showCancel !== false) {
+    html += '<button id="modal-btn-cancel" style="padding:8px 16px;border:1px solid #d1d5db;border-radius:8px;background:#fff;color:#374151;font-size:14px;cursor:pointer">' + (opt.cancelText || '取消') + '</button>';
+  }
+  html += '<button id="modal-btn-confirm" style="padding:8px 16px;border:none;border-radius:8px;background:#4F46E5;color:#fff;font-size:14px;cursor:pointer">' + (opt.confirmText || '确定') + '</button>';
+  html += '</div>';
+
+  box.innerHTML = html;
+  overlay.appendChild(box);
+  container.appendChild(overlay);
+
+  var closeModal = function(result) {
+    if (overlay.parentNode) {
+      overlay.style.opacity = '0';
+      overlay.style.transition = 'opacity .2s';
+      setTimeout(function() {
+        if (overlay.parentNode) { overlay.parentNode.removeChild(overlay); }
+      }, 200);
+    }
+    if (result && opt.onConfirm) { opt.onConfirm(); }
+    if (!result && opt.onCancel) { opt.onCancel(); }
+  };
+
+  document.getElementById('modal-btn-confirm').addEventListener('click', function() { closeModal(true); });
+  var cancelBtn = document.getElementById('modal-btn-cancel');
+  if (cancelBtn) {
+    cancelBtn.addEventListener('click', function() { closeModal(false); });
+  }
+  overlay.addEventListener('click', function(e) {
+    if (e.target === overlay) { closeModal(false); }
+  });
+};
+
+// ============================================================
+// Part 7: Online/Offline Detection
+// ============================================================
+(function() {
+  window.addEventListener('online', function() {
+    APP.showToast('网络已恢复', 'success', 2000);
+  });
+  window.addEventListener('offline', function() {
+    APP.showToast('当前无网络，部分音频可能无法播放', 'info', 4000);
+  });
+})();
+
+// ============================================================
+// Part 8: Streak Badge Updater
+// ============================================================
+function _updateStreakBadge() {
+  var badge = document.getElementById('streak-badge');
+  var num = document.getElementById('streak-number');
+  if (badge && num && AppState.stats.streakDays > 0) {
+    badge.style.display = 'flex';
+    num.textContent = AppState.stats.streakDays;
+  } else if (badge) {
+    badge.style.display = 'none';
+  }
+}
+
+// ============================================================
+// Part 9: Progress Helpers
+// ============================================================
+function _isItemCompleted(taskId) {
+  if (!AppState || !AppState.completedItems) return false;
+  return AppState.completedItems.indexOf(taskId) >= 0;
+}
+
+function _toggleTaskComplete(taskId) {
+  if (!AppState) return;
+  var items = AppState.completedItems ? AppState.completedItems.split(',').filter(function(s) { return s.length > 0; }) : [];
+  var idx = items.indexOf(taskId);
+  if (idx >= 0) {
+    items.splice(idx, 1);
+  } else {
+    items.push(taskId);
+    AppState.stats.totalCompletions = (AppState.stats.totalCompletions || 0) + 1;
+  }
+  updateState('completedItems', items.join(','));
+  _updateStreak();
+  _updateStreakBadge();
+}
+
+function _calculateModuleProgress(module) {
+  if (!AppState) return 0;
+  var total = 0;
+  var done = 0;
+  // Estimate total tasks per module: 8 weeks x 6 days x ~3 tasks = 144
+  total = 144;
+  var items = AppState.completedItems ? AppState.completedItems.split(',') : [];
+  for (var i = 0; i < items.length; i++) {
+    if (items[i].indexOf('-' + module) >= 0 || items[i].indexOf(module + '-') >= 0) {
+      done++;
+    }
+  }
+  return total > 0 ? Math.round(done / total * 100) : 0;
+}
+
+function _calculateOverallProgress() {
+  if (!AppState) return 0;
+  var total = 576; // 8 weeks x 6 days x 4 modules x ~3 tasks
+  var items = AppState.completedItems ? AppState.completedItems.split(',').filter(function(s) { return s.length > 0; }) : [];
+  return total > 0 ? Math.round(items.length / total * 100) : 0;
+}
+
+function _getCompletedWeeks() {
+  if (!AppState) return [];
+  var completed = {};
+  var items = AppState.completedItems ? AppState.completedItems.split(',') : [];
+  for (var i = 0; i < items.length; i++) {
+    var match = items[i].match(/w(\d+)d/);
+    if (match) {
+      var w = parseInt(match[1], 10);
+      if (!completed[w]) completed[w] = { total: 0, done: 0 };
+      completed[w].done++;
+    }
+  }
+  // A week is "completed" if all tasks across 4 modules x 6 days are done
+  // For simplicity, ~72 tasks per week, if >80% done consider completed
+  var result = [];
+  for (var w = 1; w <= 8; w++) {
+    if (completed[w] && completed[w].done >= 58) {
+      result.push(w);
+    }
+  }
+  return result;
+}
+
+// ============================================================
+// Part 10: UI Components
+// ============================================================
+
+/* SVG Icons */
+var ICONS = {
+  check: '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>',
+  lock: '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>',
+  fire: '<svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M12 2C12 2 7 8 7 13a5 5 0 0 0 10 0c0-5-5-11-5-11zm0 16a3 3 0 0 1-3-3c0-1.5 1.5-3 3-5 1.5 2 3 3.5 3 5a3 3 0 0 1-3 3z"/></svg>',
+  star: '<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>',
+  chevronLeft: '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>',
+  chevronRight: '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>',
+  chevronDown: '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>',
+  speaker: '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 5L6 9H2v6h4l5 4V5z"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>',
+  refresh: '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg>',
+  alert: '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>',
+  info: '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>'
+};
+
+/* ProgressRing: SVG circular progress */
+function createProgressRing(percent, size, strokeColor) {
+  if (!size) size = 120;
+  if (!strokeColor) strokeColor = '#4F46E5';
+  var radius = (size - 12) / 2;
+  var circumference = 2 * Math.PI * radius;
+  var offset = circumference - (percent / 100) * circumference;
+
+  var container = document.createElement('div');
+  container.style.cssText = 'position:relative;width:' + size + 'px;height:' + size + 'px;display:inline-block';
+
+  var svgHTML = '<svg width="' + size + '" height="' + size + '" viewBox="0 0 ' + size + ' ' + size + '">';
+  svgHTML += '<circle cx="' + (size/2) + '" cy="' + (size/2) + '" r="' + radius + '" fill="none" stroke="#e5e7eb" stroke-width="6"/>';
+  svgHTML += '<circle cx="' + (size/2) + '" cy="' + (size/2) + '" r="' + radius + '" fill="none" stroke="' + strokeColor + '" stroke-width="6" stroke-linecap="round" stroke-dasharray="' + circumference + '" stroke-dashoffset="' + offset + '" style="transition:stroke-dashoffset .6s ease;transform:rotate(-90deg);transform-origin:center"/>';
+  svgHTML += '</svg>';
+
+  var textHTML = '<div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);text-align:center">';
+  textHTML += '<span style="font-size:' + (size/5) + 'px;font-weight:700;color:#1f2937">' + percent + '%</span>';
+  textHTML += '</div>';
+
+  container.innerHTML = svgHTML + textHTML;
+  return container;
+}
+
+/* ProgressBar: horizontal bar with label */
+function createProgressBar(percent, label, color) {
+  if (!color) color = '#4F46E5';
+  var container = document.createElement('div');
+  container.style.cssText = 'margin-bottom:8px';
+
+  var header = document.createElement('div');
+  header.style.cssText = 'display:flex;justify-content:space-between;margin-bottom:4px';
+  header.innerHTML = '<span style="font-size:14px;color:#374151">' + label + '</span><span style="font-size:14px;font-weight:600;color:' + color + '">' + percent + '%</span>';
+
+  var track = document.createElement('div');
+  track.style.cssText = 'width:100%;height:8px;background:#e5e7eb;border-radius:4px;overflow:hidden';
+
+  var fill = document.createElement('div');
+  fill.style.cssText = 'height:100%;width:' + percent + '%;background:' + color + ';border-radius:4px;transition:width .6s ease';
+
+  track.appendChild(fill);
+  container.appendChild(header);
+  container.appendChild(track);
+  return container;
+}
+
+/* WeekTimeline: 8 interactive week dots */
+function createWeekTimeline(currentWeek, unlockedWeeks, completedWeeks) {
+  var container = document.createElement('div');
+  container.style.cssText = 'display:flex;align-items:center;justify-content:space-between;position:relative;padding:8px 0';
+
+  for (var w = 1; w <= 8; w++) {
+    var dot = document.createElement('div');
+    var isUnlocked = unlockedWeeks.indexOf(w) >= 0;
+    var isCompleted = completedWeeks.indexOf(w) >= 0;
+    var isCurrent = w === currentWeek;
+
+    var bg = '#d1d5db';
+    var textColor = '#9ca3af';
+    if (isCompleted) { bg = '#10b981'; textColor = '#fff'; }
+    else if (isCurrent) { bg = '#4F46E5'; textColor = '#fff'; }
+    else if (isUnlocked) { bg = '#93c5fd'; textColor = '#fff'; }
+
+    dot.style.cssText = 'width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:600;color:' + textColor + ';background:' + bg + ';cursor:' + (isUnlocked ? 'pointer' : 'default') + ';transition:transform .2s;z-index:1;touch-action:manipulation';
+    dot.textContent = isCompleted ? '✓' : String(w);
+
+    if (!isUnlocked) {
+      dot.innerHTML = ICONS.lock;
+      dot.style.color = '#9ca3af';
+    }
+
+    if (isUnlocked) {
+      (function(weekNum) {
+        dot.addEventListener('click', function() {
+          APP.navigateTo('listening/week/' + weekNum);
+        });
+        dot.addEventListener('touchend', function(e) {
+          e.preventDefault();
+          APP.navigateTo('listening/week/' + weekNum);
+        });
+      })(w);
+    }
+
+    container.appendChild(dot);
+  }
+  return container;
+}
+
+/* Badge */
+function createBadge(text, variant) {
+  var colors = {
+    mastered: { bg: '#d1fae5', text: '#065f46' },
+    review: { bg: '#fef3c7', text: '#92400e' },
+    new: { bg: '#dbeafe', text: '#1e40af' },
+    locked: { bg: '#f3f4f6', text: '#6b7280' }
+  };
+  var c = colors[variant] || colors.new;
+  var span = document.createElement('span');
+  span.style.cssText = 'display:inline-block;padding:2px 8px;border-radius:4px;font-size:12px;font-weight:500;background:' + c.bg + ';color:' + c.text;
+  span.textContent = text;
+  return span;
+}
+
+/* Button */
+function createButton(text, variant, onClick) {
+  var variants = {
+    primary: { bg: '#4F46E5', text: '#fff', border: 'none' },
+    secondary: { bg: '#fff', text: '#374151', border: '1px solid #d1d5db' },
+    success: { bg: '#10b981', text: '#fff', border: 'none' },
+    danger: { bg: '#ef4444', text: '#fff', border: 'none' },
+    ghost: { bg: 'transparent', text: '#4F46E5', border: 'none' }
+  };
+  var v = variants[variant] || variants.primary;
+  var btn = document.createElement('button');
+  btn.style.cssText = 'padding:8px 16px;border:' + v.border + ';border-radius:8px;background:' + v.bg + ';color:' + v.text + ';font-size:14px;cursor:pointer;touch-action:manipulation;transition:transform .1s,opacity .1s;-webkit-tap-highlight-color:transparent';
+  btn.textContent = text;
+  btn.addEventListener('click', onClick);
+  btn.addEventListener('mousedown', function() { btn.style.transform = 'scale(0.97)'; });
+  btn.addEventListener('mouseup', function() { btn.style.transform = 'scale(1)'; });
+  btn.addEventListener('mouseleave', function() { btn.style.transform = 'scale(1)'; });
+  btn.addEventListener('touchstart', function() { btn.style.transform = 'scale(0.97)'; });
+  btn.addEventListener('touchend', function() { btn.style.transform = 'scale(1)'; });
+  return btn;
+}
+
+/* CollapsiblePanel */
+function createCollapsiblePanel(title, contentHTML, defaultOpen) {
+  var container = document.createElement('div');
+  container.style.cssText = 'border:1px solid #e5e7eb;border-radius:8px;margin-bottom:8px;overflow:hidden';
+
+  var header = document.createElement('div');
+  header.style.cssText = 'display:flex;justify-content:space-between;align-items:center;padding:12px 16px;cursor:pointer;touch-action:manipulation;background:#f9fafb;user-select:none;-webkit-tap-highlight-color:transparent';
+  header.innerHTML = '<span style="font-weight:500;font-size:14px;color:#1f2937">' + title + '</span><span class="panel-arrow" style="transition:transform .2s;display:inline-block">' + ICONS.chevronDown + '</span>';
+
+  var body = document.createElement('div');
+  body.style.cssText = 'padding:0 16px;max-height:' + (defaultOpen ? '2000px' : '0') + ';overflow:hidden;transition:max-height .3s ease,padding .3s ease';
+  body.innerHTML = '<div style="padding:8px 0 16px;font-size:14px;color:#4b5563;line-height:1.7">' + contentHTML + '</div>';
+
+  var isOpen = !!defaultOpen;
+  header.addEventListener('click', function() {
+    isOpen = !isOpen;
+    var arrow = header.querySelector('.panel-arrow');
+    if (isOpen) {
+      body.style.maxHeight = '2000px';
+      body.style.padding = '0 16px';
+      arrow.style.transform = 'rotate(180deg)';
+    } else {
+      body.style.maxHeight = '0';
+      body.style.padding = '0 16px';
+      arrow.style.transform = 'rotate(0deg)';
+    }
+  });
+
+  container.appendChild(header);
+  container.appendChild(body);
+  return container;
+}
+
+/* WeekSelector: horizontal scrollable tabs */
+function createWeekSelector(current, unlockedWeeks, onChange) {
+  var container = document.createElement('div');
+  container.style.cssText = 'display:flex;gap:4px;overflow-x:auto;padding:4px 0 12px;-webkit-overflow-scrolling:touch';
+
+  for (var w = 1; w <= 8; w++) {
+    var isUnlocked = unlockedWeeks.indexOf(w) >= 0;
+    var isCurrent = w === current;
+
+    var tab = document.createElement('button');
+    tab.style.cssText = 'min-width:44px;height:36px;border-radius:8px;border:' + (isCurrent ? '2px solid #4F46E5' : '1px solid #e5e7eb') + ';background:' + (isCurrent ? '#eef2ff' : '#fff') + ';color:' + (isUnlocked ? '#1f2937' : '#9ca3af') + ';font-size:14px;font-weight:' + (isCurrent ? '600' : '400') + ';cursor:' + (isUnlocked ? 'pointer' : 'default') + ';touch-action:manipulation;white-space:nowrap';
+    tab.textContent = 'W' + w;
+    if (!isUnlocked) {
+      tab.style.opacity = '0.5';
+    }
+    if (isUnlocked && onChange) {
+      (function(weekNum) {
+        tab.addEventListener('click', function() { onChange(weekNum); });
+      })(w);
+    }
+    container.appendChild(tab);
+  }
+  return container;
+}
+
+// ============================================================
+// Part 11: Home Page Renderer
+// ============================================================
+function _refreshHomeProgress() {
+  if (!AppState) return;
+  var overall = _calculateOverallProgress();
+  var container = document.getElementById('home-overall-progress');
+  if (container) {
+    container.innerHTML = '';
+    container.appendChild(createProgressRing(overall, 120, '#4F46E5'));
+    var label = document.createElement('p');
+    label.style.cssText = 'margin-top:8px;font-size:14px;color:#6b7280';
+    label.textContent = '总完成进度';
+    container.appendChild(label);
+  }
+  // Module progress bars
+  var modContainer = document.getElementById('home-module-progress');
+  if (modContainer) {
+    modContainer.innerHTML = '';
+    var mods = [
+      { key: 'listening', label: '🎧 听力', color: '#4F46E5' },
+      { key: 'reading', label: '📖 阅读', color: '#10b981' },
+      { key: 'writing', label: '✍️ 写作', color: '#f59e0b' },
+      { key: 'speaking', label: '💬 口语', color: '#ef4444' }
+    ];
+    for (var i = 0; i < mods.length; i++) {
+      var pct = _calculateModuleProgress(mods[i].key);
+      modContainer.appendChild(createProgressBar(pct, mods[i].label, mods[i].color));
+    }
+  }
+  // Week timeline
+  var timeline = document.getElementById('week-timeline-placeholder');
+  if (timeline) {
+    var completed = _getCompletedWeeks();
+    timeline.innerHTML = '';
+    // Use parent's parent (the container div)
+    var tlContainer = document.getElementById('home-week-timeline');
+    // Replace placeholder with actual timeline
+    timeline.appendChild(createWeekTimeline(AppState.currentWeek, AppState.unlockedWeeks, completed));
+  }
+  // Daily tasks
+  var tasksPlaceholder = document.getElementById('daily-tasks-placeholder');
+  if (tasksPlaceholder) {
+    tasksPlaceholder.innerHTML = '';
+    var tasksContainer = tasksPlaceholder.parentNode;
+    // Show today's tasks based on current week and day
+    var w = AppState.currentWeek;
+    var d = AppState.currentDay;
+    var modules = ['listening', 'reading', 'writing', 'speaking'];
+    var moduleNames = { listening: '🎧 听力', reading: '📖 阅读', writing: '✍️ 写作', speaking: '💬 口语' };
+    for (var j = 0; j < modules.length; j++) {
+      var mod = modules[j];
+      var taskId = 'w' + w + 'd' + d + '-' + mod;
+      var isDone = _isItemCompleted(taskId);
+
+      var row = document.createElement('div');
+      row.style.cssText = 'display:flex;align-items:center;justify-content:space-between;padding:10px 0;border-bottom:1px solid #f3f4f6;cursor:pointer;touch-action:manipulation';
+      row.innerHTML = '<div style="display:flex;align-items:center;gap:8px"><div style="width:22px;height:22px;border-radius:6px;border:2px solid ' + (isDone ? '#10b981' : '#d1d5db') + ';display:flex;align-items:center;justify-content:center;background:' + (isDone ? '#10b981' : '#fff') + ';transition:all .2s">' + (isDone ? '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>' : '') + '</div><span style="font-size:14px;color:' + (isDone ? '#9ca3af' : '#1f2937') + ';' + (isDone ? 'text-decoration:line-through' : '') + '">' + moduleNames[mod] + '</span></div><span style="font-size:12px;color:#9ca3af">第' + w + '周 第' + d + '天</span>';
+
+      (function(tId) {
+        row.addEventListener('click', function() {
+          _toggleTaskComplete(tId);
+          _refreshHomeProgress();
+        });
+        row.addEventListener('touchend', function(e) {
+          e.preventDefault();
+          _toggleTaskComplete(tId);
+          _refreshHomeProgress();
+        });
+      })(taskId);
+
+      tasksPlaceholder.appendChild(row);
+    }
+  }
+}
+
+// ============================================================
+// Part 12: Audio System
+// ============================================================
+var AudioSystem = {
+  supported: false,
+  speaking: false,
+  _initialized: false,
+
+  init: function() {
+    if (this._initialized) return;
+    this._initialized = true;
+    this.supported = _FEATURES.speechSynthesis;
+    if (this.supported) {
+      // Pre-warm audio on first user interaction
+      var self = this;
+      document.addEventListener('touchstart', function() { self._prime(); }, { once: true });
+      document.addEventListener('click', function() { self._prime(); }, { once: true });
+    }
+  },
+
+  _prime: function() {
+    if (!this.supported) return;
+    try {
+      var u = new SpeechSynthesisUtterance('');
+      u.volume = 0;
+      u.rate = 1;
+      window.speechSynthesis.speak(u);
+      window.speechSynthesis.cancel();
+    } catch(e) {}
+  },
+
+  speak: function(text, options) {
+    if (!this.supported) {
+      if (options && options.onFallback) options.onFallback(text);
+      return false;
+    }
+    var opts = options || {};
+    try {
+      window.speechSynthesis.cancel();
+      var u = new SpeechSynthesisUtterance(text);
+      u.lang = opts.lang || 'en-US';
+      u.rate = opts.rate || (AppState && AppState.settings ? AppState.settings.audioSpeed : 1.0);
+
+      var self = this;
+      u.onstart = function() {
+        self.speaking = true;
+        if (opts.onStart) opts.onStart();
+      };
+      u.onend = function() {
+        self.speaking = false;
+        if (opts.onEnd) opts.onEnd();
+      };
+      u.onerror = function(e) {
+        self.speaking = false;
+        if (e.error !== 'canceled' && e.error !== 'interrupted') {
+          if (opts.onError) opts.onError(e);
+          else if (opts.onFallback) opts.onFallback(text);
+        }
+      };
+      window.speechSynthesis.speak(u);
+      return true;
+    } catch(e) {
+      this.speaking = false;
+      if (opts.onFallback) opts.onFallback(text);
+      return false;
+    }
+  },
+
+  stop: function() {
+    if (this.supported) {
+      try { window.speechSynthesis.cancel(); } catch(e) {}
+    }
+    this.speaking = false;
+  },
+
+  isSpeaking: function() {
+    if (this.supported) {
+      try { return window.speechSynthesis.speaking; } catch(e) { return false; }
+    }
+    return this.speaking;
+  }
+};
+
+// ============================================================
+// Part 13: AudioButton Component
+// ============================================================
+function createAudioButton(text, options) {
+  var btn = document.createElement('button');
+  btn.style.cssText = 'width:40px;height:40px;border-radius:50%;border:2px solid #e5e7eb;background:#fff;display:inline-flex;align-items:center;justify-content:center;cursor:pointer;touch-action:manipulation;transition:all .2s;-webkit-tap-highlight-color:transparent;flex-shrink:0';
+  btn.innerHTML = ICONS.speaker;
+  btn.setAttribute('aria-label', '播放发音');
+
+  var state = 'idle'; // idle, loading, playing, error, fallback
+  var opts = options || {};
+
+  function setState(s) {
+    state = s;
+    switch(s) {
+      case 'idle':
+        btn.style.borderColor = '#e5e7eb';
+        btn.style.background = '#fff';
+        btn.innerHTML = ICONS.speaker;
+        break;
+      case 'loading':
+        btn.style.borderColor = '#93c5fd';
+        btn.innerHTML = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#3b82f6" stroke-width="2" style="animation:spin .8s linear infinite"><circle cx="12" cy="12" r="10"/><path d="M12 2a10 10 0 0 1 10 10"/></svg>';
+        break;
+      case 'playing':
+        btn.style.borderColor = '#4F46E5';
+        btn.style.background = '#eef2ff';
+        btn.innerHTML = '<svg width="18" height="18" viewBox="0 0 24 24" fill="#4F46E5"><path d="M8 5v14l11-7z"/></svg>';
+        break;
+      case 'error':
+        btn.style.borderColor = '#fca5a5';
+        btn.style.background = '#fef2f2';
+        btn.innerHTML = ICONS.refresh;
+        break;
+      case 'fallback':
+        btn.style.borderColor = '#fbbf24';
+        btn.style.background = '#fffbeb';
+        btn.innerHTML = ICONS.info;
+        break;
+    }
+  }
+
+  btn.addEventListener('click', function(e) {
+    e.stopPropagation();
+    if (state === 'playing') {
+      AudioSystem.stop();
+      setState('idle');
+      return;
+    }
+    if (state === 'loading') return;
+
+    setState('loading');
+    AudioSystem.speak(text, {
+      rate: opts.speed || 1.0,
+      onStart: function() { setState('playing'); },
+      onEnd: function() { setState('idle'); },
+      onError: function() {
+        setState('error');
+        setTimeout(function() { if (state === 'error') setState('idle'); }, 3000);
+      },
+      onFallback: function() {
+        setState('fallback');
+        APP.showToast('当前浏览器不支持语音播放，请尝试复制单词到其他翻译软件', 'info', 4000);
+        setTimeout(function() { if (state === 'fallback') setState('idle'); }, 3000);
+      }
+    });
+  });
+
+  return btn;
+}
+
+// Add spin keyframe for loading
+var spinStyle = document.createElement('style');
+spinStyle.textContent = '@keyframes spin{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}';
+document.head.appendChild(spinStyle);
+
+// ============================================================
+// Part 14: WordCard Component (flip animation)
+// ============================================================
+function createWordCard(word, phonetic, meaning, example) {
+  var card = document.createElement('div');
+  card.style.cssText = 'background:#fff;border:1px solid #e5e7eb;border-radius:12px;padding:16px;cursor:pointer;touch-action:manipulation;transition:transform .2s,box-shadow .2s;position:relative;min-height:100px;-webkit-tap-highlight-color:transparent';
+
+  var isFlipped = false;
+  var audioBtn = null;
+
+  function renderFront() {
+    return '<div style="display:flex;align-items:center;justify-content:space-between;height:100%">' +
+      '<div>' +
+        '<div style="font-size:18px;font-weight:600;color:#1f2937;margin-bottom:4px">' + word + '</div>' +
+        '<div style="font-size:13px;color:#9ca3af">' + (phonetic || '') + '</div>' +
+      '</div>' +
+      '<div id="audio-btn-' + word.replace(/[^a-zA-Z]/g, '') + '" style="flex-shrink:0"></div>' +
+    '</div>';
+  }
+
+  function renderBack() {
+    var html = '<div style="font-size:14px;color:#4b5563">';
+    html += '<div style="font-size:16px;font-weight:600;color:#1f2937;margin-bottom:8px">' + (meaning || '') + '</div>';
+    if (example) {
+      html += '<div style="font-size:13px;color:#6b7280;font-style:italic">' + example + '</div>';
+    }
+    html += '</div>';
+    return html;
+  }
+
+  card.innerHTML = renderFront();
+
+  // Attach audio button after DOM is created
+  setTimeout(function() {
+    var placeholder = document.getElementById('audio-btn-' + word.replace(/[^a-zA-Z]/g, ''));
+    if (placeholder) {
+      audioBtn = createAudioButton(word);
+      placeholder.appendChild(audioBtn);
+    }
+  }, 0);
+
+  // Hover effect
+  card.addEventListener('mouseenter', function() {
+    card.style.boxShadow = '0 4px 12px rgba(0,0,0,.1)';
+    card.style.transform = 'translateY(-2px)';
+  });
+  card.addEventListener('mouseleave', function() {
+    card.style.boxShadow = 'none';
+    card.style.transform = 'translateY(0)';
+  });
+
+  // Click to flip
+  card.addEventListener('click', function(e) {
+    // Don't flip if clicking audio button
+    if (e.target.closest('button')) return;
+    isFlipped = !isFlipped;
+    card.style.transform = 'rotateY(180deg)';
+    card.style.transition = 'transform .4s ease';
+    setTimeout(function() {
+      card.innerHTML = isFlipped ? renderBack() : renderFront();
+      card.style.transform = 'rotateY(0deg)';
+      // Re-attach audio btn if front
+      if (!isFlipped) {
+        var ph = document.getElementById('audio-btn-' + word.replace(/[^a-zA-Z]/g, ''));
+        if (ph && audioBtn) ph.appendChild(audioBtn);
+      }
+    }, 200);
+  });
+
+  return card;
+}
+
+/* WordCardList: responsive grid of word cards */
+function createWordCardList(words) {
+  var grid = document.createElement('div');
+  grid.style.cssText = 'display:grid;grid-template-columns:repeat(2,1fr);gap:8px';
+  // Responsive: 1 col on very small, 2 on mobile, 3-4 on desktop
+  if (window.innerWidth >= 768) {
+    grid.style.gridTemplateColumns = 'repeat(3,1fr)';
+  }
+  if (window.innerWidth >= 1024) {
+    grid.style.gridTemplateColumns = 'repeat(4,1fr)';
+  }
+  for (var i = 0; i < words.length; i++) {
+    var w = words[i];
+    grid.appendChild(createWordCard(w.en, w.phonetic, w.zh, w.example));
+  }
+  return grid;
+}
+
+/* DictationInput: input field for dictation practice */
+function createDictationInput(correctWord, onResult) {
+  var container = document.createElement('div');
+  container.style.cssText = 'display:flex;gap:8px;align-items:center;margin-top:8px';
+
+  var input = document.createElement('input');
+  input.type = 'text';
+  input.placeholder = '输入你听到的单词...';
+  input.style.cssText = 'flex:1;padding:10px 12px;border:1px solid #d1d5db;border-radius:8px;font-size:16px;outline:none;transition:border-color .2s';
+
+  var submitBtn = createButton('提交', 'primary', function() {
+    var userInput = input.value.trim();
+    var isCorrect = userInput.toLowerCase() === correctWord.toLowerCase();
+    if (isCorrect) {
+      input.style.borderColor = '#10b981';
+      input.style.background = '#f0fdf4';
+      APP.showToast('✓ 正确！', 'success', 1500);
+    } else {
+      input.style.borderColor = '#ef4444';
+      input.style.background = '#fef2f2';
+      APP.showToast('✗ 正确答案是: ' + correctWord, 'error', 3000);
+    }
+    if (onResult) onResult(isCorrect, userInput);
+    setTimeout(function() {
+      input.style.borderColor = '#d1d5db';
+      input.style.background = '#fff';
+      input.value = '';
+      input.focus();
+    }, 1500);
+  });
+
+  input.addEventListener('keydown', function(e) {
+    if (e.key === 'Enter') { submitBtn.click(); }
+  });
+
+  container.appendChild(input);
+  container.appendChild(submitBtn);
+  return container;
+}
+
+// ============================================================
+// Part 15: Content Helper
+// ============================================================
+function _getTaskId(week, day, module, taskIdx) {
+  return 'w' + week + 'd' + day + '-' + module + (taskIdx !== undefined ? '-t' + taskIdx : '');
+}
+
+function _markDayComplete(week, day) {
+  var mods = ['listening', 'reading', 'writing', 'speaking'];
+  var today = _getDateString();
+  for (var i = 0; i < mods.length; i++) {
+    var tid = _getTaskId(week, day, mods[i]);
+    if (!_isItemCompleted(tid)) {
+      var items = AppState.completedItems ? AppState.completedItems.split(',').filter(function(s) { return s.length > 0; }) : [];
+      items.push(tid);
+      updateState('completedItems', items.join(','));
+    }
+  }
+  _updateStreak();
+  _updateStreakBadge();
+  APP.showToast('🎉 太棒了！今天的任务全部完成！', 'encourage', 3000);
+}
+
+// ============================================================
+// Part 16: CONTENT Data — Listening Module
+// ============================================================
+var CONTENT = {
+  listening: {
+    title: '听力',
+    weeks: [
+      { // Week 1
+        title: '王陆语料库 · 日常生活词汇',
+        days: [
+          { tasks: [
+            { id: 'vocab', type: 'vocabulary', title: '住宿与旅行词汇', words: [
+              { en: 'accommodation', phonetic: '/əˌkɒməˈdeɪʃn/', zh: '住宿；膳宿', example: 'The accommodation was excellent.' },
+              { en: 'reservation', phonetic: '/ˌrezəˈveɪʃn/', zh: '预订；保留', example: 'I have a reservation for two nights.' },
+              { en: 'departure', phonetic: '/dɪˈpɑːtʃə(r)/', zh: '出发；离开', example: 'The departure time is 3 PM.' },
+              { en: 'passenger', phonetic: '/ˈpæsɪndʒə(r)/', zh: '乘客；旅客', example: 'All passengers must check in.' },
+              { en: 'luggage', phonetic: '/ˈlʌɡɪdʒ/', zh: '行李', example: 'Your luggage will arrive shortly.' },
+              { en: 'destination', phonetic: '/ˌdestɪˈneɪʃn/', zh: '目的地', example: 'Our destination is London.' },
+              { en: 'itinerary', phonetic: '/aɪˈtɪnərəri/', zh: '行程表；旅行计划', example: 'Check your itinerary for details.' },
+              { en: 'cancellation', phonetic: '/ˌkænsəˈleɪʃn/', zh: '取消', example: 'There is a cancellation fee.' }
+            ]},
+            { id: 'dictation', type: 'dictation', title: '听写练习', sentences: [
+              { text: 'The accommodation was excellent and the staff were very friendly.', zh: '住宿非常好，工作人员非常友好。' },
+              { text: 'I need to confirm my reservation for tomorrow.', zh: '我需要确认明天的预订。' }
+            ]}
+          ]},
+          { tasks: [/* Day 2 */]},
+          { tasks: [/* Day 3 */]},
+          { tasks: [/* Day 4 */]},
+          { tasks: [/* Day 5 */]},
+          { tasks: [{ id: 'review', type: 'review', title: '本周复习' }]},
+          { tasks: [{ id: 'rest', type: 'rest', title: '休息日' }]}
+        ]
+      }
+      // Week 2
+      { title: '王陆语料库 · 校园生活词汇', days: _makeWeekDays([{id:'vocab',type:'vocabulary',title:'校园词汇',words:[{en:'campus',phonetic:'/ˈkæmpəs/',zh:'校园',example:'The campus is beautiful.'},{en:'seminar',phonetic:'/ˈsemɪnɑː(r)/',zh:'研讨会',example:'I attended a seminar.'},{en:'lecture',phonetic:'/ˈlektʃə(r)/',zh:'讲座',example:'The lecture was informative.'},{en:'tutorial',phonetic:'/tjuːˈtɔːriəl/',zh:'辅导课',example:''},{en:'assignment',phonetic:'/əˈsaɪnmənt/',zh:'作业',example:'The assignment is due Friday.'},{en:'deadline',phonetic:'/ˈdedlaɪn/',zh:'截止日期',example:'The deadline is approaching.'}]},{id:'dictation',type:'dictation',title:'校园场景听写',sentences:[{text:'The lecture hall is on the second floor.',zh:'讲座厅在二楼。'},{text:'Please submit your assignment before the deadline.',zh:'请在截止日期前提交作业。'}]}]) },
+      // Week 3
+      { title: '王陆语料库 · 工作与职业词汇', days: _makeWeekDays([{id:'vocab',type:'vocabulary',title:'职业词汇',words:[{en:'career',phonetic:'/kəˈrɪə(r)/',zh:'职业；生涯',example:''},{en:'promotion',phonetic:'/prəˈməʊʃn/',zh:'晋升',example:''},{en:'salary',phonetic:'/ˈsæləri/',zh:'薪水',example:''},{en:'interview',phonetic:'/ˈɪntəvjuː/',zh:'面试',example:''},{en:'colleague',phonetic:'/ˈkɒliːɡ/',zh:'同事',example:''},{en:'qualification',phonetic:'/ˌkwɒlɪfɪˈkeɪʃn/',zh:'资格',example:''}]},{id:'dictation',type:'dictation',title:'工作场景听写',sentences:[{text:'She got a promotion after three years.',zh:'三年后她获得了晋升。'}]}]) },
+      // Week 4
+      { title: '王陆语料库 · 健康与医疗词汇', days: _makeWeekDays([{id:'vocab',type:'vocabulary',title:'医疗词汇',words:[{en:'appointment',phonetic:'/əˈpɔɪntmənt/',zh:'预约',example:''},{en:'prescription',phonetic:'/prɪˈskrɪpʃn/',zh:'处方',example:''},{en:'symptom',phonetic:'/ˈsɪmptəm/',zh:'症状',example:''},{en:'treatment',phonetic:'/ˈtriːtmənt/',zh:'治疗',example:''},{en:'diagnosis',phonetic:'/ˌdaɪəɡˈnəʊsɪs/',zh:'诊断',example:''},{en:'insurance',phonetic:'/ɪnˈʃʊərəns/',zh:'保险',example:''}]}]) },
+      // Week 5
+      { title: '题型技巧 · 填空题', days: _makeWeekDays([{id:'technique',type:'technique',title:'填空题解题方法',content:'1. 预读题目，划关键词\n2. 预测答案词性（名词/数字/日期）\n3. 注意同义替换\n4. 检查拼写和单复数\n5. 答案不超过规定的词数'},{id:'practice',type:'dictation',title:'Section 1 精听',sentences:[{text:'The meeting will take place on Thursday the 14th at 2:30 PM.',zh:'会议将于周四14日下午2:30举行。'}]}]) },
+      // Week 6
+      { title: '题型技巧 · 选择题', days: _makeWeekDays([{id:'technique',type:'technique',title:'选择题解题方法',content:'1. 提前阅读问题和选项\n2. 注意选项间的细微差别\n3. 排除法：去掉明显错误的\n4. 注意转折词：but, however, actually\n5. 不要听到某个词就选，要理解整体意思'},{id:'practice',type:'dictation',title:'Section 2 精听',sentences:[{text:'Visitors are advised to arrive at least 30 minutes before the tour starts.',zh:'建议游客在游览开始前至少30分钟到达。'}]}]) },
+      // Week 7
+      { title: '题型技巧 · 地图题+配对题', days: _makeWeekDays([{id:'technique',type:'technique',title:'地图题技巧',content:'1. 先看图例和方向标识\n2. 找到起点（entrance/you are here）\n3. 跟着描述顺序移动\n4. 注意方位词：opposite, next to, behind, in front of\n5. 注意路线描述：go straight, turn left/right'},{id:'technique2',type:'technique',title:'配对题技巧',content:'1. 快速浏览所有选项\n2. 听的时候做简要笔记\n3. 注意排除法和同义替换\n4. 配对题通常按原文顺序出题'}]}),
+      // Week 8
+      { title: '模考冲刺 · 考前准备', days: _makeWeekDays([{id:'technique',type:'technique',title:'模考建议',content:'1. 完整做一套剑桥真题（计时）\n2. 分析错题，找出薄弱题型\n3. 复习错词本\n4. 调整作息，保证考试当天状态\n5. 准备考试用品：证件、铅笔、橡皮\n\n考试当天：\n- 听力开始前快速预读Section 1-4\n- 遇到不会的题不要纠结，继续听下一题\n- 最后10分钟誊写答案，检查拼写'},{id:'review-all',type:'review',title:'总复习'}]}),
+    ]
+  },
+
+  reading: {
+    title: '阅读',
+    weeks: [
+      { // Week 1
+        title: '高频词汇 · 长难句入门',
+        days: [
+          { tasks: [
+            { id: 'vocab', type: 'vocabulary', title: '学术高频词汇', words: [
+              { en: 'significant', phonetic: '/sɪɡˈnɪfɪkənt/', zh: '重要的；显著的', example: 'There was a significant increase.' },
+              { en: 'establish', phonetic: '/ɪˈstæblɪʃ/', zh: '建立；确立', example: 'They established a new system.' },
+              { en: 'evidence', phonetic: '/ˈevɪdəns/', zh: '证据；迹象', example: 'The evidence suggests otherwise.' },
+              { en: 'approach', phonetic: '/əˈprəʊtʃ/', zh: '方法；途径 v. 接近', example: 'A new approach was adopted.' },
+              { en: 'contribute', phonetic: '/kənˈtrɪbjuːt/', zh: '贡献；促成', example: 'Several factors contribute to this.' },
+              { en: 'potential', phonetic: '/pəˈtenʃl/', zh: '潜力；可能性', example: 'It has great potential.' },
+              { en: 'assume', phonetic: '/əˈsjuːm/', zh: '假设；认为', example: 'We cannot assume this is true.' },
+              { en: 'consequence', phonetic: '/ˈkɒnsɪkwəns/', zh: '结果；后果', example: 'The consequences were severe.' }
+            ]},
+            { id: 'sentences', type: 'sentence-analysis', title: '长难句分析', sentences: [
+              { text: 'Despite the complexity of the issue, researchers have identified several factors that contribute to the decline.', translation: '尽管问题复杂，研究人员已经确定了导致下降的几个因素。', analysis: '主干: researchers have identified factors. 让步状语: Despite the complexity. 定语从句: that contribute to the decline.' }
+            ]}
+          ]},
+          { tasks: [/* Day 2-5 placeholder */]},
+          { tasks: []}, { tasks: []}, { tasks: []},
+          { tasks: [{ id: 'review', type: 'review', title: '本周复习' }]},
+          { tasks: [{ id: 'rest', type: 'rest', title: '休息日' }]}
+        ]
+      },
+      // Week 2
+      { title: '学术词汇 · 教育类', days: _makeWeekDays([{id:'vocab',type:'vocabulary',title:'教育类高频词',words:[{en:'curriculum',phonetic:'/kəˈrɪkjələm/',zh:'课程',example:''},{en:'assessment',phonetic:'/əˈsesmənt/',zh:'评估',example:''},{en:'academic',phonetic:'/ˌækəˈdemɪk/',zh:'学术的',example:''},{en:'discipline',phonetic:'/ˈdɪsəplɪn/',zh:'学科；纪律',example:''},{en:'scholarship',phonetic:'/ˈskɒləʃɪp/',zh:'奖学金',example:''}]}]) },
+      // Week 3
+      { title: '学术词汇 · 科技类', days: _makeWeekDays([{id:'vocab',type:'vocabulary',title:'科技类高频词',words:[{en:'innovation',phonetic:'/ˌɪnəˈveɪʃn/',zh:'创新',example:''},{en:'artificial',phonetic:'/ˌɑːtɪˈfɪʃl/',zh:'人工的',example:''},{en:'automation',phonetic:'/ˌɔːtəˈmeɪʃn/',zh:'自动化',example:''},{en:'breakthrough',phonetic:'/ˈbreɪkθruː/',zh:'突破',example:''},{en:'device',phonetic:'/dɪˈvaɪs/',zh:'设备',example:''}]}]) },
+      // Week 4
+      { title: '题型技巧 · 判断题(T/F/NG)', days: _makeWeekDays([{id:'technique',type:'technique',title:'判断题核心技巧',content:'TRUE = 原文明确说到；FALSE = 原文明确说相反；NOT GIVEN = 原文没提到。注意：部分匹配不等于TRUE（可能是NG）；偷换概念是NG常见陷阱。'}]) },
+      // Week 5
+      { title: '题型技巧 · 填空题', days: _makeWeekDays([{id:'technique',type:'technique',title:'阅读填空题方法',content:'1. 定位题目在原文的位置\n2. 注意空格前后词在原文的替换\n3. 答案必须来自原文（原词）\n4. 注意单复数、时态一致\n5. 不超过规定词数'}]) },
+      // Week 6
+      { title: '题型技巧 · 匹配题+Heading题', days: _makeWeekDays([{id:'technique',type:'technique',title:'Matching与Heading技巧',content:'人名匹配：先圈所有人名，读一段配一个。段落匹配：重点读首尾句+转折句。Heading：先读选项，读一段选一个，关注主题句。'}]) },
+      // Week 7
+      { title: '进阶阅读 · 段落精读', days: _makeWeekDays([{id:'sentences',type:'sentence-analysis',title:'复杂长难句',sentences:[{text:'The phenomenon, which has been observed across multiple continents and in diverse ecosystems, suggests that the underlying mechanism represents a fundamental biological response to environmental stress.',translation:'这一现象在多个大洲和不同生态系统中都被观察到，表明其底层机制代表了对环境压力的基本生物反应。',analysis:'主干: The phenomenon suggests that... 定语从句: which has been observed...'}]}]) },
+      // Week 8
+      { title: '模考冲刺 · 时间管理', days: _makeWeekDays([{id:'technique',type:'technique',title:'阅读考试策略',content:'时间分配（60分钟/40题）：Passage 1: 15-17分钟；Passage 2: 18-20分钟；Passage 3: 20-23分钟。策略：1.先看题再看文章 2.遇难题跳过 3.全部写入答题卡'}]) }
+    ],
+    synonyms: [
+      { word: 'important', synonyms: ['crucial', 'vital', 'essential', 'significant', 'paramount', 'fundamental'] },
+      { word: 'show', synonyms: ['demonstrate', 'illustrate', 'indicate', 'reveal', 'display', 'exhibit'] },
+      { word: 'increase', synonyms: ['rise', 'grow', 'climb', 'surge', 'escalate', 'soar'] },
+      { word: 'decrease', synonyms: ['decline', 'drop', 'fall', 'reduce', 'diminish', 'plummet'] },
+      { word: 'because', synonyms: ['due to', 'owing to', 'as a result of', 'on account of', 'thanks to'] },
+      { word: 'but', synonyms: ['however', 'nevertheless', 'nonetheless', 'yet', 'although', 'whereas'] },
+      { word: 'problem', synonyms: ['issue', 'challenge', 'difficulty', 'obstacle', 'dilemma', 'setback'] },
+      { word: 'solve', synonyms: ['resolve', 'address', 'tackle', 'overcome', 'deal with', 'mitigate'] },
+      { word: 'think', synonyms: ['believe', 'consider', 'argue', 'contend', 'maintain', 'assert'] },
+      { word: 'many', synonyms: ['numerous', 'a wide range of', 'a variety of', 'various', 'multiple'] },
+      { word: 'good', synonyms: ['beneficial', 'advantageous', 'favorable', 'positive', 'desirable'] },
+      { word: 'bad', synonyms: ['detrimental', 'harmful', 'adverse', 'negative', 'unfavorable'] },
+      { word: 'big', synonyms: ['substantial', 'considerable', 'enormous', 'immense', 'vast'] },
+      { word: 'small', synonyms: ['minor', 'slight', 'marginal', 'negligible', 'minimal'] },
+      { word: 'cause', synonyms: ['lead to', 'result in', 'bring about', 'give rise to', 'trigger'] }
+    ]
+  },
+
+  writing: {
+    title: '写作',
+    weeks: [
+      { // Week 1
+        title: 'Task 1 图表作文基础',
+        days: [
+          { tasks: [
+            { id: 'framework', type: 'framework', title: 'Task 1 开头段框架', content: '改写题目，用自己的话描述图表类型和主要内容。', template: 'The ${chart_type} illustrates/shows/compares ${what} ${where} over the period from ${start} to ${end}.' },
+            { id: 'vocab', type: 'vocabulary', title: '图表描述词汇', words: [
+              { en: 'increase', phonetic: '/ɪnˈkriːs/', zh: '增长', example: '' },
+              { en: 'decrease', phonetic: '/dɪˈkriːs/', zh: '减少', example: '' },
+              { en: 'fluctuate', phonetic: '/ˈflʌktʃueɪt/', zh: '波动', example: '' },
+              { en: 'remain stable', phonetic: '', zh: '保持稳定', example: '' },
+              { en: 'peak', phonetic: '/piːk/', zh: '达到峰值', example: '' },
+              { en: 'trough', phonetic: '/trɒf/', zh: '低谷', example: '' }
+            ]}
+          ]},
+          { tasks: []}, { tasks: []}, { tasks: []}, { tasks: []},
+          { tasks: [{ id: 'review', type: 'review', title: '本周复习' }]},
+          { tasks: [{ id: 'rest', type: 'rest', title: '休息日' }]}
+        ]
+      },
+      // Week 2
+      { title: 'Task 1 趋势描述', days: _makeWeekDays([{id:'framework',type:'framework',title:'趋势变化句型',content:'描述上升：increased/climbed/rose/grew + sharply/steadily/significantly\n描述下降：decreased/declined/dropped/fell + gradually/slightly\n描述平稳：remained stable/leveled off/plateaued\n描述波动：fluctuated/varied',template:'The figure ${verb} from ${start} to ${end}, ${adverb}.'},{id:'vocab',type:'vocabulary',title:'程度副词',words:[{en:'sharply',phonetic:'/ˈʃɑːpli/',zh:'急剧地'},{en:'steadily',phonetic:'/ˈstedɪli/',zh:'稳定地'},{en:'gradually',phonetic:'/ˈɡrædʒuəli/',zh:'逐渐地'},{en:'significantly',phonetic:'/sɪɡˈnɪfɪkəntli/',zh:'显著地'},{en:'slightly',phonetic:'/ˈslaɪtli/',zh:'轻微地'}]}]) },
+      // Week 3
+      { title: 'Task 1 比较与对比', days: _makeWeekDays([{id:'framework',type:'framework',title:'比较结构',content:'A比B高：A is higher/greater than B\nA是B的两倍：A is twice as high as B\n相比之下：By contrast / In comparison\n相似地：Similarly / Likewise\n最大差别：The biggest difference is...'},{id:'vocab',type:'vocabulary',title:'比较词汇',words:[{en:'whereas',phonetic:'/weərˈæz/',zh:'然而'},{en:'while',phonetic:'/waɪl/',zh:'而'},{en:'compared to',phonetic:'',zh:'与...相比'},{en:'in contrast',phonetic:'',zh:'相比之下'}]}]) },
+      // Week 4
+      { title: 'Task 2 议论文结构', days: _makeWeekDays([{id:'framework',type:'framework',title:'Introduction段落',content:'第一句：General statement（背景概括）\n第二句：Paraphrase the question（改写题目）\n第三句：Thesis statement（表明立场）\n第四句：Outline（简述下文结构）',template:'In recent years, there has been growing concern about ${topic}. While some argue that ${view1}, others believe that ${view2}. This essay will discuss both perspectives before reaching a conclusion.'}]) },
+      // Week 5
+      { title: 'Task 2 主体段落', days: _makeWeekDays([{id:'framework',type:'framework',title:'Body Paragraph结构',content:'Topic sentence（主题句）→ Explanation（解释）→ Example（举例）→ Link back（回扣论点）\n\n常用连接：\n- 主题句：Firstly / The primary reason is...\n- 举例：For instance / A case in point is...\n- 总结：Thus / Therefore / As a result...'}]) },
+      // Week 6
+      { title: 'Task 2 高分词汇', days: _makeWeekDays([{id:'vocab',type:'vocabulary',title:'议论文高分替换词',words:[{en:'advantageous',phonetic:'/ˌædvənˈteɪdʒəs/',zh:'有利的'},{en:'detrimental',phonetic:'/ˌdetrɪˈmentl/',zh:'有害的'},{en:'inevitable',phonetic:'/ɪnˈevɪtəbl/',zh:'不可避免的'},{en:'controversial',phonetic:'/ˌkɒntrəˈvɜːʃl/',zh:'有争议的'},{en:'implement',phonetic:'/ˈɪmplɪment/',zh:'实施'},{en:'alleviate',phonetic:'/əˈliːvieɪt/',zh:'缓解'}]}]) },
+      // Week 7
+      { title: '真题实战', days: _makeWeekDays([{id:'practice',type:'prompt',title:'写作真题',topic:'Some people think that governments should spend more money on railways rather than roads. To what extent do you agree or disagree?',hints:['考虑环保角度','考虑成本效益','考虑不同地区的需求差异']}]) },
+      // Week 8
+      { title: '考前冲刺', days: _makeWeekDays([{id:'technique',type:'technique',title:'写作考前策略',content:'时间分配（60分钟）：Task 1: 20分钟；Task 2: 40分钟。\n\n注意事项：\n1. 先写Task 2（分值更高）\n2. Task 1 至少150词，Task 2 至少250词\n3. 留3-5分钟检查语法和拼写\n4. 不要照抄题目，必须改写\n5. 每个主体段落只讨论一个核心观点'}]) }
+    ],
+    connectors: [
+      { category: '递进', items: ['furthermore', 'moreover', 'in addition', 'additionally', 'besides'] },
+      { category: '转折', items: ['however', 'nevertheless', 'on the other hand', 'in contrast', 'conversely'] },
+      { category: '因果', items: ['therefore', 'consequently', 'as a result', 'thus', 'hence'] },
+      { category: '举例', items: ['for example', 'for instance', 'such as', 'namely', 'to illustrate'] },
+      { category: '总结', items: ['in conclusion', 'to sum up', 'overall', 'in summary', 'to conclude'] }
+    ]
+  },
+
+  speaking: {
+    title: '口语',
+    parts: {
+      part1: {
+        title: 'Part 1 日常话题',
+        topics: [
+          {
+            topic: 'Work / Study',
+            questions: [
+              { q: 'Do you work or study?', sample: 'I am currently a student at... / I work as a...' },
+              { q: 'Why did you choose that subject/job?', sample: 'I chose this because I have always been passionate about...' },
+              { q: 'Do you enjoy it?', sample: 'Yes, I find it very rewarding because...' }
+            ]
+          },
+          {
+            topic: 'Hometown',
+            questions: [
+              { q: 'Where is your hometown?', sample: 'I come from [city], which is located in [province/region].' },
+              { q: 'What do you like about your hometown?', sample: 'What I like most is the [food/people/scenery]...' },
+              { q: 'Has your hometown changed much?', sample: 'Yes, it has changed dramatically over the past decade...' }
+            ]
+          },
+          {
+            topic: 'Home / Accommodation',
+            questions: [
+              { q: 'Do you live in a house or an apartment?', sample: 'I live in an apartment in the city center.' },
+              { q: 'What is your favorite room?', sample: 'My favorite room is definitely the living room because...' }
+            ]
+          },
+          {
+            topic: 'Hobbies',
+            questions: [
+              { q: 'What do you do in your free time?', sample: 'In my free time, I enjoy [reading/watching movies/playing sports]...' },
+              { q: 'Do you prefer indoor or outdoor activities?', sample: 'I tend to prefer indoor activities like...' }
+            ]
+          },
+          {
+            topic: 'Food',
+            questions: [
+              { q: 'What is your favorite food?', sample: 'My favorite food is [dish] which is a traditional [cuisine] dish.' },
+              { q: 'Do you cook?', sample: 'I cook occasionally, but I am not an expert.' }
+            ]
+          }
+        ]
+      },
+      part2: {
+        title: 'Part 2 话题陈述',
+        topics: [
+          {
+            topic: 'Describe a memorable event in your life',
+            cues: ['What it was', 'When it happened', 'Where it happened', 'Why it was memorable'],
+            framework: 'I would like to talk about [event]. It happened [when] at [where]. It was particularly memorable because...',
+            sample: 'One of the most memorable events in my life was my graduation day. It was in June of last year at my university...'
+          },
+          {
+            topic: 'Describe a person who has influenced you',
+            cues: ['Who this person is', 'How you know this person', 'What this person is like', 'Why they influenced you'],
+            framework: 'The person I want to talk about is [name/person]. I first met [him/her] when...',
+            sample: 'The person who has influenced me most is my high school English teacher...'
+          },
+          {
+            topic: 'Describe a place you would like to visit',
+            cues: ['Where it is', 'What you can do there', 'Why you want to go there'],
+            framework: 'A place I have always wanted to visit is [place]. It is located in...',
+            sample: 'I have always wanted to visit Japan, specifically Kyoto...'
+          },
+          {
+            topic: 'Describe a book or movie you enjoyed',
+            cues: ['What it is', 'What it is about', 'Why you enjoyed it'],
+            framework: 'The book/movie I want to talk about is [title]. It is about...',
+            sample: 'One book I really enjoyed is "Atomic Habits" by James Clear...'
+          },
+          {
+            topic: 'Describe a skill you would like to learn',
+            cues: ['What the skill is', 'Why you want to learn it', 'How you plan to learn it'],
+            framework: 'A skill I would like to learn is [skill]. I want to learn it because...',
+            sample: 'I would love to learn how to play the piano...'
+          }
+        ]
+      },
+      part3: {
+        title: 'Part 3 深入讨论',
+        skills: [
+          { title: '展开论点 — STARE 法', content: 'Situation → Task → Action → Result → Example。先用一句话提出观点，然后用 STARE 展开论证。' },
+          { title: '连接词使用', content: '使用 furthermore, moreover 递进；however, on the other hand 对比；for example, such as 举例。' },
+          { title: '不会说怎么办', content: '用 "Well, that is an interesting question..." 争取思考时间；或者用 "What I mean is..." 重新组织语言。' }
+        ]
+      },
+      pronunciation: [
+        { sound: '/θ/', tip: '舌尖轻触上齿，气流从缝隙通过', examples: 'think, thank, three, through, thousand' },
+        { sound: '/ð/', tip: '与/θ/口型相同，但声带振动', examples: 'this, that, the, they, there' },
+        { sound: '/ʃ/', tip: '嘴唇圆拢，舌尖靠近上颚', examples: 'she, ship, should, English, special' },
+        { sound: '/ʒ/', tip: '与/ʃ/口型相同，但声带振动', examples: 'usually, television, measure, decision' }
+      ]
+    },
+    weeks: [
+      { // Week 1
+        title: 'Part 1 基础话题',
+        days: [
+          { tasks: [
+            { id: 'vocab', type: 'vocabulary', title: '口语常用表达', words: [
+              { en: 'absolutely', phonetic: '/ˈæbsəluːtli/', zh: '绝对地；完全地', example: 'That is absolutely right.' },
+              { en: 'definitely', phonetic: '/ˈdefɪnətli/', zh: '肯定地；明确地', example: 'I will definitely go.' },
+              { en: 'honestly', phonetic: '/ˈɒnɪstli/', zh: '老实说', example: 'Honestly, I think it is a great idea.' },
+              { en: 'basically', phonetic: '/ˈbeɪsɪkli/', zh: '基本上', example: 'Basically, it means...' },
+              { en: 'actually', phonetic: '/ˈæktʃuəli/', zh: '实际上', example: 'Actually, I prefer the other one.' },
+              { en: 'generally speaking', phonetic: '', zh: '一般来说', example: '' }
+            ]}
+          ]},
+          { tasks: []}, { tasks: []}, { tasks: []}, { tasks: []},
+          { tasks: [{ id: 'review', type: 'review', title: '本周复习' }]},
+          { tasks: [{ id: 'rest', type: 'rest', title: '休息日' }]}
+        ]
+      },
+      // Week 2
+      { title: 'Part 1 进阶话题', days: _makeWeekDays([{id:'vocab',type:'vocabulary',title:'情感表达词汇',words:[{en:'fascinating',phonetic:'/ˈfæsɪneɪtɪŋ/',zh:'迷人的'},{en:'incredible',phonetic:'/ɪnˈkredəbl/',zh:'难以置信的'},{en:'overwhelming',phonetic:'/ˌəʊvəˈwelmɪŋ/',zh:'压倒性的'},{en:'tremendous',phonetic:'/trəˈmendəs/',zh:'巨大的'},{en:'remarkable',phonetic:'/rɪˈmɑːkəbl/',zh:'非凡的'}]}]) },
+      // Week 3
+      { title: 'Part 2 人物类话题', days: _makeWeekDays([{id:'vocab',type:'vocabulary',title:'描述人物词汇',words:[{en:'charismatic',phonetic:'/ˌkærɪzˈmætɪk/',zh:'有魅力的'},{en:'diligent',phonetic:'/ˈdɪlɪdʒənt/',zh:'勤奋的'},{en:'compassionate',phonetic:'/kəmˈpæʃənət/',zh:'有同情心的'},{en:'versatile',phonetic:'/ˈvɜːsətaɪl/',zh:'多才多艺的'},{en:'inspiring',phonetic:'/ɪnˈspaɪərɪŋ/',zh:'鼓舞人心的'}]}]) },
+      // Week 4
+      { title: 'Part 2 地点类话题', days: _makeWeekDays([{id:'vocab',type:'vocabulary',title:'描述地点词汇',words:[{en:'picturesque',phonetic:'/ˌpɪktʃəˈresk/',zh:'风景如画的'},{en:'bustling',phonetic:'/ˈbʌslɪŋ/',zh:'繁忙的'},{en:'serene',phonetic:'/səˈriːn/',zh:'宁静的'},{en:'vibrant',phonetic:'/ˈvaɪbrənt/',zh:'充满活力的'},{en:'spacious',phonetic:'/ˈspeɪʃəs/',zh:'宽敞的'}]}]) },
+      // Week 5
+      { title: 'Part 3 观点论证', days: _makeWeekDays([{id:'technique',type:'technique',title:'论证方法',content:'原因法：The main reason is that... / This is largely because...\n举例法：For instance... / Take... as an example\n对比法：In the past... but now... / Young people tend to... while older generations...\n预测法：In the future, we might see... / This trend is likely to continue...'}]) },
+      // Week 6
+      { title: '发音训练', days: _makeWeekDays([{id:'vocab',type:'vocabulary',title:'易读错词汇',words:[{en:'comfortable',phonetic:'/ˈkʌmftəbl/',zh:'舒适的'},{en:'vegetable',phonetic:'/ˈvedʒtəbl/',zh:'蔬菜'},{en:'interesting',phonetic:'/ˈɪntrəstɪŋ/',zh:'有趣的'},{en:'different',phonetic:'/ˈdɪfrənt/',zh:'不同的'},{en:'probably',phonetic:'/ˈprɒbəbli/',zh:'可能'}]}]) },
+      // Week 7
+      { title: '真题模拟', days: _makeWeekDays([{id:'technique',type:'technique',title:'口语考试模拟',content:'Part 1 (4-5分钟)：2-3个日常话题，每个2-3个问题\nPart 2 (3-4分钟)：1分钟准备 + 1-2分钟陈述\nPart 3 (4-5分钟)：与Part 2相关的抽象讨论\n\n练习方法：用手机录音，回听找问题\n注意：流利度 > 词汇量，自然表达 > 背模板'}]) },
+      // Week 8
+      { title: '考前冲刺', days: _makeWeekDays([{id:'technique',type:'technique',title:'口语考前策略',content:'考试当天建议：\n1. 提前30分钟到达考场\n2. 深呼吸，保持放松\n3. Part 1 答案2-3句即可\n4. Part 2 充分利用1分钟准备时间\n5. Part 3 多说多解释，展示思维深度\n6. 不会的词用简单方式解释（paraphrase）\n7. 保持微笑和眼神交流'}]) }
+    ]
+  }
+};
+
+// Helper: generates 7-day week from task templates for days 1-5
+function _makeWeekDays(dayTasks) {
+  var week = [];
+  for (var d = 0; d < 7; d++) {
+    if (d < 5 && dayTasks[d]) {
+      week.push({ tasks: dayTasks[d] });
+    } else if (d === 5) {
+      week.push({ tasks: [{ id: 'review', type: 'review', title: '本周复习' }] });
+    } else {
+      week.push({ tasks: [{ id: 'rest', type: 'rest', title: '休息日' }] });
+    }
+  }
+  return week;
+}
+
+// ============================================================
+// Part 17: Listening Module Renderer
+// ============================================================
+function _getWeekContent(module, weekNum) {
+  var data = CONTENT[module];
+  if (!data || !data.weeks) return null;
+  return data.weeks[weekNum - 1] || null;
+}
+
+function _renderModuleHeader(module, weekNum) {
+  var data = CONTENT[module];
+  var week = _getWeekContent(module, weekNum);
+  var moduleIcons = { listening: '🎧', reading: '📖', writing: '✍️', speaking: '💬' };
+  var html = '<div style="margin-bottom:12px">';
+  html += '<h2 style="font-size:22px;font-weight:700;color:#1f2937;margin-bottom:4px">' + (moduleIcons[module] || '') + ' ' + data.title + '</h2>';
+  if (week) {
+    html += '<p style="color:#6b7280;font-size:14px">第' + weekNum + '周 · ' + week.title + '</p>';
+  }
+  html += '</div>';
+  return html;
+}
+
+function renderListening(subPage, subId) {
+  var weekNum = subId ? parseInt(subId, 10) : (AppState ? AppState.currentWeek : 1);
+  if (isNaN(weekNum) || weekNum < 1) weekNum = 1;
+  if (weekNum > 8) weekNum = 8;
+
+  var container = document.getElementById('listening-content');
+  if (!container) return;
+
+  var html = '<div>';
+  // Header
+  html += _renderModuleHeader('listening', weekNum);
+
+  // Week selector
+  html += '<div id="listening-week-selector"></div>';
+
+  // Day tabs
+  var dayNames = ['周一', '周二', '周三', '周四', '周五', '周六', '复习'];
+  html += '<div style="display:flex;gap:4px;overflow-x:auto;margin-bottom:16px;-webkit-overflow-scrolling:touch">';
+  var currentDay = AppState ? AppState.currentDay : 1;
+  var today = new Date().getDay();
+  var activeDay = today >= 1 && today <= 7 ? today : currentDay;
+  for (var d = 1; d <= 7; d++) {
+    var isActive = d === activeDay;
+    html += '<button class="day-tab-btn" data-day="' + d + '" style="min-width:44px;height:36px;border-radius:8px;border:' + (isActive ? '2px solid #4F46E5' : '1px solid #e5e7eb') + ';background:' + (isActive ? '#eef2ff' : '#fff') + ';color:' + (isActive ? '#4f46e5' : '#6b7280') + ';font-size:13px;cursor:pointer;white-space:nowrap;touch-action:manipulation">' + dayNames[d-1] + '</button>';
+  }
+  html += '</div>';
+
+  // Content area
+  html += '<div id="listening-day-content" style="margin-bottom:16px">';
+  var week = _getWeekContent('listening', weekNum);
+  if (week) {
+    for (var d2 = 1; d2 <= 7; d2++) {
+      var dayData = week.days[d2 - 1];
+      var isVisible = d2 === activeDay;
+      html += '<div class="day-content" data-day="' + d2 + '" style="' + (isVisible ? '' : 'display:none') + '">';
+      if (dayData && dayData.tasks && dayData.tasks.length > 0) {
+        for (var t = 0; t < dayData.tasks.length; t++) {
+          var task = dayData.tasks[t];
+          if (task.id === 'rest') {
+            html += '<div style="text-align:center;padding:32px;color:#9ca3af"><p style="font-size:48px;margin-bottom:8px">😴</p><p>休息日 — 劳逸结合，效果更好！</p></div>';
+          } else if (task.id === 'review') {
+            html += '<div style="background:#fef3c7;border-radius:12px;padding:20px;text-align:center">';
+            html += '<p style="font-size:24px;margin-bottom:8px">📝</p>';
+            html += '<p style="font-weight:600;color:#92400e;margin-bottom:8px">' + task.title + '</p>';
+            html += '<p style="font-size:14px;color:#92400e">复习本周学过的所有内容，特别是错词本中的单词。</p>';
+            html += '</div>';
+          } else if (task.type === 'vocabulary' && task.words) {
+            html += '<div style="margin-bottom:12px">';
+            html += '<h4 style="font-size:16px;font-weight:600;color:#1f2937;margin-bottom:8px">' + task.title + '</h4>';
+            var taskId = _getTaskId(weekNum, d2, 'listening', t);
+            var isDone = _isItemCompleted(taskId);
+            html += '<div style="display:flex;align-items:center;gap:8px;margin-bottom:8px">';
+            html += '<div class="task-checkbox" data-taskid="' + taskId + '" style="width:20px;height:20px;border-radius:4px;border:2px solid ' + (isDone ? '#10b981' : '#d1d5db') + ';display:flex;align-items:center;justify-content:center;background:' + (isDone ? '#10b981' : '#fff') + ';cursor:pointer;flex-shrink:0">' + (isDone ? '<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>' : '') + '</div>';
+            html += '<span style="font-size:14px;color:#6b7280">' + (task.words ? task.words.length : 0) + ' 个单词</span>';
+            html += '</div>';
+            html += '<div style="display:grid;grid-template-columns:repeat(2,1fr);gap:8px">';
+            if (window.innerWidth >= 1024) {
+              html = html.replace('repeat(2,1fr)', 'repeat(3,1fr)');
+            }
+            for (var wi = 0; wi < task.words.length; wi++) {
+              var w = task.words[wi];
+              var wordId = w.en.replace(/[^a-zA-Z]/g, '');
+              html += '<div style="background:#fff;border:1px solid #e5e7eb;border-radius:10px;padding:12px;position:relative">';
+              html += '<div style="display:flex;justify-content:space-between;align-items:flex-start">';
+              html += '<div>';
+              html += '<div style="font-size:16px;font-weight:600;color:#1f2937;margin-bottom:2px">' + w.en + '</div>';
+              html += '<div style="font-size:12px;color:#9ca3af;margin-bottom:4px">' + (w.phonetic || '') + '</div>';
+              html += '<div style="font-size:13px;color:#6b7280">' + w.zh + '</div>';
+              if (w.example) {
+                html += '<div style="font-size:12px;color:#9ca3af;font-style:italic;margin-top:4px">' + w.example + '</div>';
+              }
+              html += '</div>';
+              html += '<div id="audio-' + module + '-' + wordId + '" style="flex-shrink:0"></div>';
+              html += '</div></div>';
+            }
+            html += '</div></div>';
+          } else if (task.type === 'dictation' && task.sentences) {
+            html += '<div style="margin-bottom:12px">';
+            html += '<h4 style="font-size:16px;font-weight:600;color:#1f2937;margin-bottom:8px">' + task.title + '</h4>';
+            for (var si = 0; si < task.sentences.length; si++) {
+              var s = task.sentences[si];
+              html += '<div style="background:#fff;border:1px solid #e5e7eb;border-radius:10px;padding:12px;margin-bottom:8px">';
+              html += '<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px">';
+              html += '<span style="font-size:14px;color:#1f2937">📝 ' + s.zh + '</span>';
+              html += '<div id="dict-audio-' + si + '" style="flex-shrink:0"></div>';
+              html += '</div>';
+              html += '<input type="text" placeholder="输入你听到的句子..." style="width:100%;padding:8px 12px;border:1px solid #d1d5db;border-radius:8px;font-size:14px;outline:none" data-answer="' + s.text.replace(/"/g, '&quot;') + '">';
+              html += '<button class="dict-check-btn" style="margin-top:6px;padding:6px 16px;border:none;border-radius:6px;background:#4F46E5;color:#fff;font-size:13px;cursor:pointer;touch-action:manipulation">检查</button>';
+              html += '</div>';
+            }
+            html += '</div>';
+          } else if (task.type === 'framework' || task.type === 'technique') {
+            html += '<div style="background:#eff6ff;border:1px solid #bfdbfe;border-radius:10px;padding:16px;margin-bottom:12px">';
+            html += '<h4 style="font-size:16px;font-weight:600;color:#1e40af;margin-bottom:8px">' + task.title + '</h4>';
+            html += '<div style="font-size:14px;color:#374151;line-height:1.7">' + (task.content || '') + '</div>';
+            if (task.template) {
+              html += '<div style="margin-top:8px;padding:8px 12px;background:#dbeafe;border-radius:6px;font-size:13px;color:#1e40af;font-family:monospace">' + task.template + '</div>';
+            }
+            html += '</div>';
+          }
+        }
+      } else {
+        html += '<p style="color:#9ca3af;text-align:center;padding:32px">内容开发中...</p>';
+      }
+      html += '</div>';
+    }
+  }
+  html += '</div>';
+
+  // Mark day complete button
+  html += '<div style="text-align:center;margin-bottom:24px">';
+  html += '<button id="btn-mark-day-complete" style="padding:10px 32px;border:none;border-radius:10px;background:#10b981;color:#fff;font-size:16px;font-weight:600;cursor:pointer;touch-action:manipulation;transition:transform .1s">✅ 完成今日任务</button>';
+  html += '</div></div>';
+
+  container.innerHTML = html;
+
+  // Attach week selector
+  var wsContainer = document.getElementById('listening-week-selector');
+  if (wsContainer) {
+    wsContainer.appendChild(createWeekSelector(weekNum, AppState ? AppState.unlockedWeeks : [1], function(newWeek) {
+      APP.navigateTo('listening/week/' + newWeek);
+    }));
+  }
+
+  // Day tab click handlers
+  var dayTabs = container.querySelectorAll('.day-tab-btn');
+  for (var dt = 0; dt < dayTabs.length; dt++) {
+    (function(tab) {
+      tab.addEventListener('click', function() {
+        var day = parseInt(tab.getAttribute('data-day'), 10);
+        // Update active tab style
+        var allTabs = container.querySelectorAll('.day-tab-btn');
+        for (var at = 0; at < allTabs.length; at++) {
+          allTabs[at].style.border = '1px solid #e5e7eb';
+          allTabs[at].style.background = '#fff';
+          allTabs[at].style.color = '#6b7280';
+        }
+        tab.style.border = '2px solid #4F46E5';
+        tab.style.background = '#eef2ff';
+        tab.style.color = '#4f46e5';
+        // Show/hide content
+        var dayContents = container.querySelectorAll('.day-content');
+        for (var dc = 0; dc < dayContents.length; dc++) {
+          dayContents[dc].style.display = (parseInt(dayContents[dc].getAttribute('data-day'), 10) === day) ? '' : 'none';
+        }
+      });
+    })(dayTabs[dt]);
+  }
+
+  // Task checkbox handlers
+  var checkboxes = container.querySelectorAll('.task-checkbox');
+  for (var cb = 0; cb < checkboxes.length; cb++) {
+    checkboxes[cb].addEventListener('click', function() {
+      var tid = this.getAttribute('data-taskid');
+      _toggleTaskComplete(tid);
+      var isDone = _isItemCompleted(tid);
+      this.style.borderColor = isDone ? '#10b981' : '#d1d5db';
+      this.style.background = isDone ? '#10b981' : '#fff';
+      this.innerHTML = isDone ? '<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>' : '';
+      _refreshHomeProgress();
+    });
+  }
+
+  // Dictation check handlers
+  var checkBtns = container.querySelectorAll('.dict-check-btn');
+  for (var dcb = 0; dcb < checkBtns.length; dcb++) {
+    checkBtns[dcb].addEventListener('click', function() {
+      var input = this.previousElementSibling;
+      var answer = input.getAttribute('data-answer');
+      var userInput = input.value.trim();
+      if (userInput.toLowerCase() === answer.toLowerCase()) {
+        input.style.borderColor = '#10b981';
+        input.style.background = '#f0fdf4';
+        APP.showToast('✓ 正确！', 'success', 1500);
+      } else {
+        input.style.borderColor = '#ef4444';
+        input.style.background = '#fef2f2';
+        APP.showToast('✗ 正确答案: ' + answer, 'error', 4000);
+        // Add to wrong words
+        if (AppState) {
+          var wrongIdx = -1;
+          for (var ww = 0; ww < AppState.wrongWords.length; ww++) {
+            if (AppState.wrongWords[ww].word === answer) {
+              wrongIdx = ww;
+              break;
+            }
+          }
+          if (wrongIdx >= 0) {
+            AppState.wrongWords[wrongIdx].count++;
+          } else {
+            AppState.wrongWords.push({ word: answer, week: weekNum, count: 1 });
+          }
+          schedulePersist();
+        }
+      }
+      setTimeout(function() {
+        input.style.borderColor = '#d1d5db';
+        input.style.background = '#fff';
+        input.value = '';
+      }, 1500);
+    });
+  }
+
+  // Mark day complete button
+  var markBtn = document.getElementById('btn-mark-day-complete');
+  if (markBtn) {
+    markBtn.addEventListener('click', function() {
+      var todayDay = activeDay;
+      _markDayComplete(weekNum, todayDay);
+      _refreshHomeProgress();
+      // Re-render to update checkboxes
+      renderListening('week', String(weekNum));
+    });
+  }
+
+  // Attach audio buttons (deferred after DOM settle)
+  setTimeout(function() {
+    AudioSystem.init();
+    // Attach audio buttons for word cards
+    var audioPlaceholders = container.querySelectorAll('[id^="audio-listening-"]');
+    for (var ap = 0; ap < audioPlaceholders.length; ap++) {
+      var wordText = audioPlaceholders[ap].id.replace('audio-listening-', '');
+      // Look up actual word from content
+      var weekData = _getWeekContent('listening', weekNum);
+      if (weekData) {
+        for (var d3 = 1; d3 <= 7; d3++) {
+          var dayD = weekData.days[d3 - 1];
+          if (dayD && dayD.tasks) {
+            for (var t2 = 0; t2 < dayD.tasks.length; t2++) {
+              if (dayD.tasks[t2].words) {
+                for (var wi2 = 0; wi2 < dayD.tasks[t2].words.length; wi2++) {
+                  var wd = dayD.tasks[t2].words[wi2];
+                  if (wd.en.replace(/[^a-zA-Z]/g, '') === wordText) {
+                    audioPlaceholders[ap].appendChild(createAudioButton(wd.en));
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    // Attach audio buttons for dictation
+    var dictAudios = container.querySelectorAll('[id^="dict-audio-"]');
+    for (var da = 0; da < dictAudios.length; da++) {
+      var sentenceIdx = parseInt(dictAudios[da].id.replace('dict-audio-', ''), 10);
+      var weekData2 = _getWeekContent('listening', weekNum);
+      if (weekData2) {
+        for (var d4 = 1; d4 <= 7; d4++) {
+          var dayD2 = weekData2.days[d4 - 1];
+          if (dayD2 && dayD2.tasks) {
+            for (var t3 = 0; t3 < dayD2.tasks.length; t3++) {
+              if (dayD2.tasks[t3].sentences && dayD2.tasks[t3].sentences[sentenceIdx]) {
+                dictAudios[da].appendChild(createAudioButton(dayD2.tasks[t3].sentences[sentenceIdx].text));
+              }
+            }
+          }
+        }
+      }
+    }
+  }, 100);
+}
+
+APP.onRoute('listening', function(subPage, subId) {
+  renderListening(subPage, subId);
+});
+
+// ============================================================
+// Part 18: Reading Module Renderer
+// ============================================================
+function renderReading(subPage, subId) {
+  var weekNum = subId ? parseInt(subId, 10) : (AppState ? AppState.currentWeek : 1);
+  if (isNaN(weekNum) || weekNum < 1) weekNum = 1;
+  if (weekNum > 8) weekNum = 8;
+
+  var container = document.getElementById('reading-content');
+  if (!container) return;
+
+  var html = '<div>';
+  html += _renderModuleHeader('reading', weekNum);
+  html += '<div id="reading-week-selector"></div>';
+
+  // Day tabs
+  var dayNames = ['周一', '周二', '周三', '周四', '周五', '周六', '复习'];
+  var activeDay = AppState ? AppState.currentDay : 1;
+  html += '<div style="display:flex;gap:4px;overflow-x:auto;margin-bottom:16px;-webkit-overflow-scrolling:touch">';
+  for (var d = 1; d <= 7; d++) {
+    var isActive = d === activeDay;
+    html += '<button class="day-tab-btn" data-day="' + d + '" style="min-width:44px;height:36px;border-radius:8px;border:' + (isActive ? '2px solid #4F46E5' : '1px solid #e5e7eb') + ';background:' + (isActive ? '#eef2ff' : '#fff') + ';color:' + (isActive ? '#4f46e5' : '#6b7280') + ';font-size:13px;cursor:pointer;white-space:nowrap;touch-action:manipulation">' + dayNames[d-1] + '</button>';
+  }
+  html += '</div>';
+
+  // Content area
+  html += '<div id="reading-day-content">';
+  var week = _getWeekContent('reading', weekNum);
+  if (week) {
+    for (var d2 = 1; d2 <= 7; d2++) {
+      var dayData = week.days[d2 - 1];
+      var isVisible = d2 === activeDay;
+      html += '<div class="day-content" data-day="' + d2 + '" style="' + (isVisible ? '' : 'display:none') + '">';
+      if (dayData && dayData.tasks && dayData.tasks.length > 0) {
+        for (var t = 0; t < dayData.tasks.length; t++) {
+          var task = dayData.tasks[t];
+          if (task.id === 'rest' || task.id === 'review') {
+            html += '<div style="text-align:center;padding:32px;color:#9ca3af"><p style="font-size:48px;margin-bottom:8px">' + (task.id === 'rest' ? '😴' : '📝') + '</p><p>' + (task.id === 'rest' ? '休息日' : '复习日 — 复习本周错题和生词') + '</p></div>';
+          } else if (task.type === 'vocabulary' && task.words) {
+            html += '<h4 style="font-size:16px;font-weight:600;color:#1f2937;margin-bottom:8px">' + task.title + '</h4>';
+            var taskId = _getTaskId(weekNum, d2, 'reading', t);
+            var isDone = _isItemCompleted(taskId);
+            html += '<div class="task-checkbox" data-taskid="' + taskId + '" style="display:flex;align-items:center;gap:6px;margin-bottom:8px;cursor:pointer;touch-action:manipulation">';
+            html += '<div style="width:20px;height:20px;border-radius:4px;border:2px solid ' + (isDone ? '#10b981' : '#d1d5db') + ';display:flex;align-items:center;justify-content:center;background:' + (isDone ? '#10b981' : '#fff') + ';flex-shrink:0">' + (isDone ? '<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>' : '') + '</div>';
+            html += '<span style="font-size:14px;color:#6b7280">标记完成 (' + task.words.length + '个单词)</span></div>';
+            html += '<div style="display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin-bottom:16px">';
+            for (var wi = 0; wi < task.words.length; wi++) {
+              var w = task.words[wi];
+              html += '<div style="background:#fff;border:1px solid #e5e7eb;border-radius:10px;padding:12px">';
+              html += '<div style="display:flex;justify-content:space-between;align-items:flex-start">';
+              html += '<div><div style="font-size:16px;font-weight:600;color:#1f2937">' + w.en + '</div><div style="font-size:12px;color:#9ca3af">' + (w.phonetic || '') + '</div><div style="font-size:13px;color:#6b7280">' + w.zh + '</div></div>';
+              html += '<div id="audio-reading-' + w.en.replace(/[^a-zA-Z]/g, '') + '"></div>';
+              html += '</div></div>';
+            }
+            html += '</div>';
+          } else if (task.type === 'sentence-analysis' && task.sentences) {
+            html += '<h4 style="font-size:16px;font-weight:600;color:#1f2937;margin-bottom:8px">' + task.title + '</h4>';
+            for (var si = 0; si < task.sentences.length; si++) {
+              var s = task.sentences[si];
+              html += '<div style="background:#fff;border:1px solid #e5e7eb;border-radius:10px;padding:14px;margin-bottom:8px">';
+              html += '<div style="font-size:15px;font-weight:600;color:#1f2937;margin-bottom:6px">' + s.text + '</div>';
+              html += '<div style="font-size:13px;color:#6b7280;margin-bottom:4px">' + s.translation + '</div>';
+              html += '<div style="font-size:12px;color:#9ca3af">' + s.analysis + '</div>';
+              html += '</div>';
+            }
+          }
+        }
+      } else {
+        html += '<p style="color:#9ca3af;text-align:center;padding:32px">内容开发中...</p>';
+      }
+      html += '</div>';
+    }
+  }
+  html += '</div>';
+
+  // Synonym bank
+  html += '<div style="margin-top:20px"><h3 style="font-size:18px;font-weight:700;color:#1f2937;margin-bottom:12px">📚 同义替换库</h3>';
+  var syns = CONTENT.reading.synonyms || [];
+  for (var sy = 0; sy < syns.length; sy++) {
+    var syn = syns[sy];
+    html += '<div style="background:#fff;border:1px solid #e5e7eb;border-radius:8px;padding:10px 14px;margin-bottom:6px">';
+    html += '<span style="font-weight:600;color:#4F46E5;font-size:14px">' + syn.word + '</span>';
+    html += '<span style="color:#6b7280;font-size:13px;margin-left:4px">→ ' + syn.synonyms.join(' / ') + '</span>';
+    html += '</div>';
+  }
+  html += '</div>';
+
+  html += '<div style="text-align:center;margin:24px 0">';
+  html += '<button id="btn-reading-mark-complete" style="padding:10px 32px;border:none;border-radius:10px;background:#10b981;color:#fff;font-size:16px;font-weight:600;cursor:pointer;touch-action:manipulation">✅ 完成今日阅读</button>';
+  html += '</div></div>';
+
+  container.innerHTML = html;
+
+  // Week selector
+  var ws = document.getElementById('reading-week-selector');
+  if (ws) { ws.appendChild(createWeekSelector(weekNum, AppState ? AppState.unlockedWeeks : [1], function(w) { APP.navigateTo('reading/week/' + w); })); }
+
+  // Day tabs
+  (function() {
+    var tabs = container.querySelectorAll('.day-tab-btn');
+    for (var i = 0; i < tabs.length; i++) {
+      tabs[i].addEventListener('click', function() {
+        var day = parseInt(this.getAttribute('data-day'), 10);
+        var all = container.querySelectorAll('.day-tab-btn');
+        for (var j = 0; j < all.length; j++) { all[j].style.border = '1px solid #e5e7eb'; all[j].style.background = '#fff'; all[j].style.color = '#6b7280'; }
+        this.style.border = '2px solid #4F46E5'; this.style.background = '#eef2ff'; this.style.color = '#4f46e5';
+        var contents = container.querySelectorAll('.day-content');
+        for (var k = 0; k < contents.length; k++) { contents[k].style.display = (parseInt(contents[k].getAttribute('data-day'), 10) === day) ? '' : 'none'; }
+      });
+    }
+  })();
+
+  // Checkboxes
+  (function() {
+    var cbs = container.querySelectorAll('.task-checkbox');
+    for (var i = 0; i < cbs.length; i++) {
+      cbs[i].addEventListener('click', function() {
+        var tid = this.getAttribute('data-taskid');
+        _toggleTaskComplete(tid);
+        var done = _isItemCompleted(tid);
+        var checkDiv = this.querySelector('div');
+        if (checkDiv) {
+          checkDiv.style.borderColor = done ? '#10b981' : '#d1d5db';
+          checkDiv.style.background = done ? '#10b981' : '#fff';
+          checkDiv.innerHTML = done ? '<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>' : '';
+        }
+        _refreshHomeProgress();
+      });
+    }
+  })();
+
+  var markBtn = document.getElementById('btn-reading-mark-complete');
+  if (markBtn) {
+    markBtn.addEventListener('click', function() {
+      _markDayComplete(weekNum, activeDay);
+      _refreshHomeProgress();
+      renderReading('week', String(weekNum));
+    });
+  }
+
+  // Audio buttons
+  setTimeout(function() {
+    AudioSystem.init();
+    var audioPs = container.querySelectorAll('[id^="audio-reading-"]');
+    for (var ap = 0; ap < audioPs.length; ap++) {
+      var wText = audioPs[ap].id.replace('audio-reading-', '');
+      var wData = _getWeekContent('reading', weekNum);
+      if (wData) {
+        for (var d3 = 1; d3 <= 7; d3++) {
+          var dd = wData.days[d3-1];
+          if (dd && dd.tasks) {
+            for (var t2 = 0; t2 < dd.tasks.length; t2++) {
+              if (dd.tasks[t2].words) {
+                for (var wi2 = 0; wi2 < dd.tasks[t2].words.length; wi2++) {
+                  if (dd.tasks[t2].words[wi2].en.replace(/[^a-zA-Z]/g, '') === wText) {
+                    audioPs[ap].appendChild(createAudioButton(dd.tasks[t2].words[wi2].en));
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }, 100);
+}
+
+APP.onRoute('reading', function(subPage, subId) {
+  renderReading(subPage, subId);
+});
+
+// ============================================================
+// Part 19: Writing Module Renderer
+// ============================================================
+function renderWriting(subPage, subId) {
+  var weekNum = subId ? parseInt(subId, 10) : (AppState ? AppState.currentWeek : 1);
+  if (isNaN(weekNum) || weekNum < 1) weekNum = 1;
+  if (weekNum > 8) weekNum = 8;
+
+  var container = document.getElementById('writing-content');
+  if (!container) return;
+
+  var html = '<div>';
+  html += _renderModuleHeader('writing', weekNum);
+  html += '<div id="writing-week-selector"></div>';
+
+  var activeDay = AppState ? AppState.currentDay : 1;
+  var dayNames = ['周一', '周二', '周三', '周四', '周五', '周六', '复习'];
+  html += '<div style="display:flex;gap:4px;overflow-x:auto;margin-bottom:16px;-webkit-overflow-scrolling:touch">';
+  for (var d = 1; d <= 7; d++) {
+    html += '<button class="day-tab-btn" data-day="' + d + '" style="min-width:44px;height:36px;border-radius:8px;border:' + (d === activeDay ? '2px solid #4F46E5' : '1px solid #e5e7eb') + ';background:' + (d === activeDay ? '#eef2ff' : '#fff') + ';color:' + (d === activeDay ? '#4f46e5' : '#6b7280') + ';font-size:13px;cursor:pointer;touch-action:manipulation">' + dayNames[d-1] + '</button>';
+  }
+  html += '</div>';
+
+  html += '<div id="writing-day-content">';
+  var week = _getWeekContent('writing', weekNum);
+  if (week) {
+    for (var d2 = 1; d2 <= 7; d2++) {
+      var dayData = week.days[d2 - 1];
+      html += '<div class="day-content" data-day="' + d2 + '" style="' + (d2 === activeDay ? '' : 'display:none') + '">';
+      if (dayData && dayData.tasks && dayData.tasks.length > 0) {
+        for (var t = 0; t < dayData.tasks.length; t++) {
+          var task = dayData.tasks[t];
+          if (task.id === 'rest' || task.id === 'review') {
+            html += '<div style="text-align:center;padding:32px"><span style="font-size:48px">' + (task.id === 'rest' ? '😴' : '📝') + '</span><p style="color:#9ca3af">' + (task.id === 'rest' ? '休息日' : '复习日') + '</p></div>';
+          } else if (task.type === 'framework') {
+            html += '<div style="background:#f0fdf4;border:1px solid #bbf7d0;border-radius:10px;padding:16px;margin-bottom:12px">';
+            html += '<h4 style="font-size:16px;font-weight:600;color:#166534;margin-bottom:8px">' + task.title + '</h4>';
+            html += '<p style="font-size:14px;color:#374151;margin-bottom:8px">' + (task.content || '') + '</p>';
+            if (task.template) {
+              html += '<div style="background:#dcfce7;border-radius:6px;padding:10px;font-size:13px;color:#15803d;font-family:monospace;word-break:break-all">' + task.template + '</div>';
+            }
+            html += '</div>';
+          } else if (task.type === 'vocabulary' && task.words) {
+            html += '<h4 style="font-size:16px;font-weight:600;color:#1f2937;margin-bottom:8px">' + task.title + '</h4>';
+            var taskId = _getTaskId(weekNum, d2, 'writing', t);
+            var isDone = _isItemCompleted(taskId);
+            html += '<div class="task-checkbox" data-taskid="' + taskId + '" style="margin-bottom:8px;cursor:pointer;touch-action:manipulation;display:flex;align-items:center;gap:8px">';
+            html += '<div style="width:20px;height:20px;border-radius:4px;border:2px solid ' + (isDone ? '#10b981' : '#d1d5db') + ';background:' + (isDone ? '#10b981' : '#fff') + ';display:flex;align-items:center;justify-content:center;flex-shrink:0">' + (isDone ? ICONS.check : '') + '</div>';
+            html += '<span style="font-size:13px;color:#6b7280">标记完成</span></div>';
+            for (var wi = 0; wi < task.words.length; wi++) {
+              var w = task.words[wi];
+              html += '<div style="background:#fff;border:1px solid #e5e7eb;border-radius:8px;padding:10px 14px;margin-bottom:6px;display:flex;justify-content:space-between;align-items:center">';
+              html += '<div><span style="font-weight:600;color:#1f2937">' + w.en + '</span>' + (w.phonetic ? '<span style="font-size:12px;color:#9ca3af;margin-left:8px">' + w.phonetic + '</span>' : '') + '<span style="font-size:13px;color:#6b7280;margin-left:8px">' + w.zh + '</span></div>';
+              html += '<div id="audio-writing-' + w.en.replace(/[^a-zA-Z]/g, '') + '"></div>';
+              html += '</div>';
+            }
+          }
+        }
+      } else {
+        html += '<p style="color:#9ca3af;text-align:center;padding:32px">内容开发中...</p>';
+      }
+      html += '</div>';
+    }
+  }
+  html += '</div>';
+
+  // Connectors table
+  html += '<div style="margin-top:20px"><h3 style="font-size:18px;font-weight:700;color:#1f2937;margin-bottom:12px">🔗 高分连接词</h3>';
+  var conns = CONTENT.writing.connectors || [];
+  for (var co = 0; co < conns.length; co++) {
+    html += '<div style="background:#fff;border:1px solid #e5e7eb;border-radius:8px;padding:12px;margin-bottom:8px">';
+    html += '<div style="font-weight:600;color:#1f2937;font-size:14px;margin-bottom:4px">' + conns[co].category + '</div>';
+    html += '<div style="font-size:13px;color:#6b7280">' + conns[co].items.join(' · ') + '</div>';
+    html += '</div>';
+  }
+  html += '</div>';
+
+  html += '<div style="text-align:center;margin:24px 0">';
+  html += '<button id="btn-writing-mark-complete" style="padding:10px 32px;border:none;border-radius:10px;background:#10b981;color:#fff;font-size:16px;font-weight:600;cursor:pointer">✅ 完成今日写作</button>';
+  html += '</div></div>';
+
+  container.innerHTML = html;
+
+  var ws = document.getElementById('writing-week-selector');
+  if (ws) { ws.appendChild(createWeekSelector(weekNum, AppState ? AppState.unlockedWeeks : [1], function(w) { APP.navigateTo('writing/week/' + w); })); }
+
+  (function() {
+    var tabs = container.querySelectorAll('.day-tab-btn');
+    for (var i = 0; i < tabs.length; i++) {
+      tabs[i].addEventListener('click', function() {
+        var day = parseInt(this.getAttribute('data-day'), 10);
+        var all = container.querySelectorAll('.day-tab-btn');
+        for (var j = 0; j < all.length; j++) { all[j].style.border = '1px solid #e5e7eb'; all[j].style.background = '#fff'; all[j].style.color = '#6b7280'; }
+        this.style.border = '2px solid #4F46E5'; this.style.background = '#eef2ff'; this.style.color = '#4f46e5';
+        var contents = container.querySelectorAll('.day-content');
+        for (var k = 0; k < contents.length; k++) { contents[k].style.display = (parseInt(contents[k].getAttribute('data-day'), 10) === day) ? '' : 'none'; }
+      });
+    }
+  })();
+
+  (function() {
+    var cbs = container.querySelectorAll('.task-checkbox');
+    for (var i = 0; i < cbs.length; i++) {
+      cbs[i].addEventListener('click', function() {
+        var tid = this.getAttribute('data-taskid');
+        _toggleTaskComplete(tid);
+        var done = _isItemCompleted(tid);
+        var checkDiv = this.querySelector('div');
+        if (checkDiv) {
+          checkDiv.style.borderColor = done ? '#10b981' : '#d1d5db';
+          checkDiv.style.background = done ? '#10b981' : '#fff';
+          checkDiv.innerHTML = done ? ICONS.check : '';
+        }
+        _refreshHomeProgress();
+      });
+    }
+  })();
+
+  var markBtn = document.getElementById('btn-writing-mark-complete');
+  if (markBtn) {
+    markBtn.addEventListener('click', function() {
+      _markDayComplete(weekNum, activeDay);
+      _refreshHomeProgress();
+      renderWriting('week', String(weekNum));
+    });
+  }
+
+  setTimeout(function() {
+    AudioSystem.init();
+    var audioPs = container.querySelectorAll('[id^="audio-writing-"]');
+    for (var ap = 0; ap < audioPs.length; ap++) {
+      var wText = audioPs[ap].id.replace('audio-writing-', '');
+      var wData = _getWeekContent('writing', weekNum);
+      if (wData) {
+        for (var d3 = 1; d3 <= 7; d3++) {
+          var dd = wData.days[d3-1];
+          if (dd && dd.tasks) {
+            for (var t2 = 0; t2 < dd.tasks.length; t2++) {
+              if (dd.tasks[t2].words) {
+                for (var wi2 = 0; wi2 < dd.tasks[t2].words.length; wi2++) {
+                  if (dd.tasks[t2].words[wi2].en.replace(/[^a-zA-Z]/g, '') === wText) {
+                    audioPs[ap].appendChild(createAudioButton(dd.tasks[t2].words[wi2].en));
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }, 100);
+}
+
+APP.onRoute('writing', function(subPage, subId) {
+  renderWriting(subPage, subId);
+});
+
+// ============================================================
+// Part 20: Speaking Module Renderer
+// ============================================================
+function renderSpeaking(subPage, subId) {
+  var weekNum = subId ? parseInt(subId, 10) : (AppState ? AppState.currentWeek : 1);
+  if (isNaN(weekNum) || weekNum < 1) weekNum = 1;
+  if (weekNum > 8) weekNum = 8;
+
+  var container = document.getElementById('speaking-content');
+  if (!container) return;
+
+  var sp = CONTENT.speaking;
+  var html = '<div>';
+  html += _renderModuleHeader('speaking', weekNum);
+  html += '<div id="speaking-week-selector"></div>';
+
+  // Part 1 topics
+  html += '<h3 style="font-size:18px;font-weight:700;color:#1f2937;margin:20px 0 12px">💬 ' + sp.parts.part1.title + '</h3>';
+  var p1Topics = sp.parts.part1.topics;
+  for (var i = 0; i < p1Topics.length; i++) {
+    var topic = p1Topics[i];
+    var qHTML = '';
+    for (var q = 0; q < topic.questions.length; q++) {
+      qHTML += '<div style="margin-bottom:10px">';
+      qHTML += '<div style="font-weight:500;color:#1f2937;font-size:14px;margin-bottom:4px">Q: ' + topic.questions[q].q + '</div>';
+      qHTML += '<div style="color:#6b7280;font-size:13px;background:#f9fafb;padding:6px 10px;border-radius:6px">' + topic.questions[q].sample + '</div>';
+      qHTML += '</div>';
+    }
+    html += '<div style="margin-bottom:8px">';
+    html += createCollapsiblePanel(topic.topic, qHTML, false).outerHTML;
+    html += '</div>';
+  }
+
+  // Part 2 topics
+  html += '<h3 style="font-size:18px;font-weight:700;color:#1f2937;margin:20px 0 12px">🎤 ' + sp.parts.part2.title + '</h3>';
+  var p2Topics = sp.parts.part2.topics;
+  for (var j = 0; j < p2Topics.length; j++) {
+    var t2 = p2Topics[j];
+    var cHTML = '<div><div style="font-weight:600;color:#1f2937;margin-bottom:8px">提示卡：</div>';
+    for (var c = 0; c < t2.cues.length; c++) {
+      cHTML += '<div style="margin-bottom:4px">• ' + t2.cues[c] + '</div>';
+    }
+    cHTML += '<div style="margin-top:8px;background:#eff6ff;padding:10px;border-radius:6px;font-size:13px;color:#1e40af">开头框架：' + t2.framework + '</div>';
+    cHTML += '<div style="margin-top:8px;font-size:13px;color:#6b7280;line-height:1.6">' + t2.sample + '</div>';
+    cHTML += '</div>';
+    html += '<div style="margin-bottom:8px">';
+    html += createCollapsiblePanel(t2.topic, cHTML, false).outerHTML;
+    html += '</div>';
+  }
+
+  // Part 3 skills
+  html += '<h3 style="font-size:18px;font-weight:700;color:#1f2937;margin:20px 0 12px">📋 ' + sp.parts.part3.title + '</h3>';
+  var p3Skills = sp.parts.part3.skills;
+  for (var k = 0; k < p3Skills.length; k++) {
+    html += '<div style="margin-bottom:8px">';
+    html += createCollapsiblePanel(p3Skills[k].title, '<div style="line-height:1.7">' + p3Skills[k].content + '</div>', false).outerHTML;
+    html += '</div>';
+  }
+
+  // Pronunciation tips
+  html += '<h3 style="font-size:18px;font-weight:700;color:#1f2937;margin:20px 0 12px">🗣️ 发音注意事项</h3>';
+  var pron = sp.pronunciation;
+  for (var p = 0; p < pron.length; p++) {
+    html += '<div style="background:#fff;border:1px solid #e5e7eb;border-radius:10px;padding:14px;margin-bottom:8px">';
+    html += '<div style="font-size:24px;font-weight:700;color:#4F46E5;margin-bottom:4px">' + pron[p].sound + '</div>';
+    html += '<div style="font-size:14px;color:#374151;margin-bottom:4px">' + pron[p].tip + '</div>';
+    html += '<div style="font-size:13px;color:#9ca3af">例词: ' + pron[p].examples + '</div>';
+    html += '</div>';
+  }
+
+  // Weekly practice tasks
+  html += '<h3 style="font-size:18px;font-weight:700;color:#1f2937;margin:20px 0 12px">📅 每日练习</h3>';
+  var week = _getWeekContent('speaking', weekNum);
+  var activeDay = AppState ? AppState.currentDay : 1;
+  var dayNames = ['周一', '周二', '周三', '周四', '周五', '周六', '复习'];
+  html += '<div style="display:flex;gap:4px;overflow-x:auto;margin-bottom:16px;-webkit-overflow-scrolling:touch">';
+  for (var d = 1; d <= 7; d++) {
+    html += '<button class="day-tab-btn" data-day="' + d + '" style="min-width:44px;height:36px;border-radius:8px;border:' + (d === activeDay ? '2px solid #4F46E5' : '1px solid #e5e7eb') + ';background:' + (d === activeDay ? '#eef2ff' : '#fff') + ';color:' + (d === activeDay ? '#4f46e5' : '#6b7280') + ';font-size:13px;cursor:pointer;touch-action:manipulation">' + dayNames[d-1] + '</button>';
+  }
+  html += '</div>';
+
+  html += '<div id="speaking-day-content">';
+  if (week) {
+    for (var d2 = 1; d2 <= 7; d2++) {
+      var dayData = week.days[d2 - 1];
+      html += '<div class="day-content" data-day="' + d2 + '" style="' + (d2 === activeDay ? '' : 'display:none') + '">';
+      if (dayData && dayData.tasks && dayData.tasks.length > 0) {
+        for (var t = 0; t < dayData.tasks.length; t++) {
+          var task = dayData.tasks[t];
+          if (task.id === 'rest') {
+            html += '<div style="text-align:center;padding:32px"><span style="font-size:48px">😴</span><p style="color:#9ca3af">休息日 · 保持轻松心态</p></div>';
+          } else if (task.id === 'review') {
+            html += '<div style="background:#fef3c7;border-radius:12px;padding:20px;text-align:center"><p style="font-size:24px">📝</p><p style="font-weight:600;color:#92400e">复习日 — 回顾本周所有话题</p></div>';
+          } else if (task.type === 'vocabulary' && task.words) {
+            html += '<h4 style="font-size:16px;font-weight:600;color:#1f2937;margin-bottom:8px">' + task.title + '</h4>';
+            var taskId = _getTaskId(weekNum, d2, 'speaking', t);
+            var isDone = _isItemCompleted(taskId);
+            html += '<div class="task-checkbox" data-taskid="' + taskId + '" style="margin-bottom:8px;cursor:pointer;touch-action:manipulation;display:flex;align-items:center;gap:8px">';
+            html += '<div style="width:20px;height:20px;border-radius:4px;border:2px solid ' + (isDone ? '#10b981' : '#d1d5db') + ';background:' + (isDone ? '#10b981' : '#fff') + ';display:flex;align-items:center;justify-content:center;flex-shrink:0">' + (isDone ? ICONS.check : '') + '</div>';
+            html += '<span style="font-size:13px;color:#6b7280">标记完成</span></div>';
+            html += '<div style="display:grid;grid-template-columns:repeat(2,1fr);gap:8px">';
+            for (var wi = 0; wi < task.words.length; wi++) {
+              var w = task.words[wi];
+              html += '<div style="background:#fff;border:1px solid #e5e7eb;border-radius:10px;padding:12px">';
+              html += '<div style="display:flex;justify-content:space-between;align-items:flex-start">';
+              html += '<div><div style="font-size:16px;font-weight:600;color:#1f2937">' + w.en + '</div><div style="font-size:12px;color:#9ca3af">' + (w.phonetic || '') + '</div><div style="font-size:13px;color:#6b7280">' + w.zh + '</div></div>';
+              html += '<div id="audio-speaking-' + w.en.replace(/[^a-zA-Z]/g, '') + '"></div>';
+              html += '</div></div>';
+            }
+            html += '</div>';
+          }
+        }
+      } else {
+        html += '<p style="color:#9ca3af;text-align:center;padding:32px">内容开发中...</p>';
+      }
+      html += '</div>';
+    }
+  }
+  html += '</div>';
+
+  html += '<div style="text-align:center;margin:24px 0">';
+  html += '<button id="btn-speaking-mark-complete" style="padding:10px 32px;border:none;border-radius:10px;background:#10b981;color:#fff;font-size:16px;font-weight:600;cursor:pointer">✅ 完成今日口语</button>';
+  html += '</div></div>';
+
+  container.innerHTML = html;
+
+  var ws = document.getElementById('speaking-week-selector');
+  if (ws) { ws.appendChild(createWeekSelector(weekNum, AppState ? AppState.unlockedWeeks : [1], function(w) { APP.navigateTo('speaking/week/' + w); })); }
+
+  (function() {
+    var tabs = container.querySelectorAll('.day-tab-btn');
+    for (var ii = 0; ii < tabs.length; ii++) {
+      tabs[ii].addEventListener('click', function() {
+        var day = parseInt(this.getAttribute('data-day'), 10);
+        var all = container.querySelectorAll('.day-tab-btn');
+        for (var jj = 0; jj < all.length; jj++) { all[jj].style.border = '1px solid #e5e7eb'; all[jj].style.background = '#fff'; all[jj].style.color = '#6b7280'; }
+        this.style.border = '2px solid #4F46E5'; this.style.background = '#eef2ff'; this.style.color = '#4f46e5';
+        var contents = container.querySelectorAll('.day-content');
+        for (var kk = 0; kk < contents.length; kk++) { contents[kk].style.display = (parseInt(contents[kk].getAttribute('data-day'), 10) === day) ? '' : 'none'; }
+      });
+    }
+  })();
+
+  (function() {
+    var cbs = container.querySelectorAll('.task-checkbox');
+    for (var ii = 0; ii < cbs.length; ii++) {
+      cbs[ii].addEventListener('click', function() {
+        var tid = this.getAttribute('data-taskid');
+        _toggleTaskComplete(tid);
+        var done = _isItemCompleted(tid);
+        var checkDiv = this.querySelector('div');
+        if (checkDiv) {
+          checkDiv.style.borderColor = done ? '#10b981' : '#d1d5db';
+          checkDiv.style.background = done ? '#10b981' : '#fff';
+          checkDiv.innerHTML = done ? ICONS.check : '';
+        }
+        _refreshHomeProgress();
+      });
+    }
+  })();
+
+  var markBtn = document.getElementById('btn-speaking-mark-complete');
+  if (markBtn) {
+    markBtn.addEventListener('click', function() {
+      _markDayComplete(weekNum, activeDay);
+      _refreshHomeProgress();
+      renderSpeaking('week', String(weekNum));
+    });
+  }
+
+  // Re-attach collapsible panel behaviors since we used outerHTML
+  setTimeout(function() {
+    var panels = container.querySelectorAll('[style*="border:1px solid #e5e7eb;border-radius:8px"]');
+    // Add click handlers for expandable sections
+    var clickableHeaders = container.querySelectorAll('[style*="cursor:pointer"]');
+    // Simplified: just wire up audio buttons
+    AudioSystem.init();
+    var audioPs = container.querySelectorAll('[id^="audio-speaking-"]');
+    for (var ap = 0; ap < audioPs.length; ap++) {
+      var wText = audioPs[ap].id.replace('audio-speaking-', '');
+      var wData = _getWeekContent('speaking', weekNum);
+      if (wData) {
+        for (var d3 = 1; d3 <= 7; d3++) {
+          var dd = wData.days[d3-1];
+          if (dd && dd.tasks) {
+            for (var t2 = 0; t2 < dd.tasks.length; t2++) {
+              if (dd.tasks[t2].words) {
+                for (var wi2 = 0; wi2 < dd.tasks[t2].words.length; wi2++) {
+                  if (dd.tasks[t2].words[wi2].en.replace(/[^a-zA-Z]/g, '') === wText) {
+                    audioPs[ap].appendChild(createAudioButton(dd.tasks[t2].words[wi2].en));
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }, 100);
+}
+
+APP.onRoute('speaking', function(subPage, subId) {
+  renderSpeaking(subPage, subId);
+});
+
+// ============================================================
+// Part 21: Import / Export
+// ============================================================
+APP.exportProgress = function() {
+  try {
+    var exportData = {
+      state: AppState,
+      exportedAt: new Date().toISOString(),
+      version: 1
+    };
+    var jsonStr = JSON.stringify(exportData);
+    var base64 = btoa(unescape(encodeURIComponent(jsonStr)));
+    return base64;
+  } catch(e) {
+    console.error('Export failed:', e);
+    return null;
+  }
+};
+
+APP.importProgress = function(base64Str) {
+  try {
+    var jsonStr = decodeURIComponent(escape(atob(base64Str)));
+    var importData = JSON.parse(jsonStr);
+    if (!importData.state || !importData.version) {
+      return { success: false, error: '格式错误：无效的备份数据' };
+    }
+    // Validate state structure
+    var requiredFields = ['currentWeek', 'currentDay', 'completedItems', 'stats', 'settings'];
+    for (var i = 0; i < requiredFields.length; i++) {
+      if (importData.state[requiredFields[i]] === undefined) {
+        return { success: false, error: '格式错误：缺少必要字段 ' + requiredFields[i] };
+      }
+    }
+    // Restore
+    AppState = importData.state;
+    _migrateState();
+    schedulePersist();
+    _refreshHomeProgress();
+    _updateStreakBadge();
+    return { success: true };
+  } catch(e) {
+    console.error('Import failed:', e);
+    return { success: false, error: '导入失败，请检查备份字符串是否完整' };
+  }
+};
+
+// ============================================================
+// Part 22: Global Error Handler
+// ============================================================
+window.onerror = function(message, source, lineNo, colNo, error) {
+  console.error('Global error:', message, 'at', source, 'line', lineNo);
+  // Don't crash — show friendly message
+  var toastEl = document.getElementById('toast-container');
+  if (toastEl) {
+    APP.showToast('出了点小问题，刷新页面试试~', 'error', 5000);
+  }
+  return true; // Prevents default error display
+};
+
+window.onunhandledrejection = function(event) {
+  console.error('Unhandled rejection:', event.reason);
+  event.preventDefault();
+};
+
+// ============================================================
+// Part 23: Settings Renderer
+// ============================================================
+function renderSettings(subPage, subId) {
+  var container = document.getElementById('settings-content');
+  if (!container) return;
+
+  var html = '<div style="max-width:500px">';
+
+  // Audio speed
+  html += '<div style="background:#fff;border-radius:12px;padding:16px;margin-bottom:12px;border:1px solid #e5e7eb">';
+  html += '<h3 style="font-size:16px;font-weight:600;color:#1f2937;margin-bottom:12px">🔊 音频语速</h3>';
+  var speeds = [0.75, 1.0, 1.25];
+  var speedLabels = ['慢速 (0.75x)', '正常 (1x)', '快速 (1.25x)'];
+  var currentSpeed = AppState ? AppState.settings.audioSpeed : 1.0;
+  html += '<div style="display:flex;gap:8px">';
+  for (var s = 0; s < speeds.length; s++) {
+    var isActive = currentSpeed === speeds[s];
+    html += '<button class="speed-btn" data-speed="' + speeds[s] + '" style="flex:1;padding:8px;border-radius:8px;border:' + (isActive ? '2px solid #4F46E5' : '1px solid #d1d5db') + ';background:' + (isActive ? '#eef2ff' : '#fff') + ';color:' + (isActive ? '#4f46e5' : '#374151') + ';font-size:13px;cursor:pointer;touch-action:manipulation">' + speedLabels[s] + '</button>';
+  }
+  html += '</div></div>';
+
+  // Auto-next
+  html += '<div style="background:#fff;border-radius:12px;padding:16px;margin-bottom:12px;border:1px solid #e5e7eb">';
+  html += '<h3 style="font-size:16px;font-weight:600;color:#1f2937;margin-bottom:8px">⚙️ 自动播放下一个</h3>';
+  var autoNext = AppState ? AppState.settings.autoNext : true;
+  html += '<label style="display:flex;align-items:center;gap:8px;cursor:pointer;touch-action:manipulation">';
+  html += '<input type="checkbox" id="setting-auto-next" ' + (autoNext ? 'checked' : '') + ' style="width:18px;height:18px">';
+  html += '<span style="font-size:14px;color:#374151">听写时自动跳转下一题</span>';
+  html += '</label></div>';
+
+  // Audio enabled
+  html += '<div style="background:#fff;border-radius:12px;padding:16px;margin-bottom:12px;border:1px solid #e5e7eb">';
+  html += '<h3 style="font-size:16px;font-weight:600;color:#1f2937;margin-bottom:8px">🎵 音频播放</h3>';
+  var audioEnabled = AppState ? AppState.settings.audioEnabled : true;
+  html += '<label style="display:flex;align-items:center;gap:8px;cursor:pointer;touch-action:manipulation">';
+  html += '<input type="checkbox" id="setting-audio-enabled" ' + (audioEnabled ? 'checked' : '') + ' style="width:18px;height:18px">';
+  html += '<span style="font-size:14px;color:#374151">启用语音朗读（部分浏览器不支持）</span>';
+  html += '</label>';
+  if (!_FEATURES.speechSynthesis) {
+    html += '<p style="font-size:12px;color:#ef4444;margin-top:8px">⚠️ 您的浏览器不支持语音合成，部分音频功能不可用</p>';
+  }
+  html += '</div>';
+
+  // Export
+  html += '<div style="background:#fff;border-radius:12px;padding:16px;margin-bottom:12px;border:1px solid #e5e7eb">';
+  html += '<h3 style="font-size:16px;font-weight:600;color:#1f2937;margin-bottom:12px">📤 导出进度</h3>';
+  html += '<button id="btn-export" style="padding:10px 24px;border:none;border-radius:8px;background:#4F46E5;color:#fff;font-size:14px;cursor:pointer;touch-action:manipulation">导出备份</button>';
+  html += '<textarea id="export-textarea" readonly style="width:100%;height:80px;margin-top:8px;padding:10px;border:1px solid #d1d5db;border-radius:8px;font-size:12px;resize:none;display:none;word-break:break-all"></textarea>';
+  html += '<button id="btn-copy-export" style="display:none;margin-top:4px;padding:6px 16px;border:1px solid #d1d5db;border-radius:6px;background:#fff;color:#374151;font-size:13px;cursor:pointer">📋 复制备份字符串</button>';
+  html += '</div>';
+
+  // Import
+  html += '<div style="background:#fff;border-radius:12px;padding:16px;margin-bottom:12px;border:1px solid #e5e7eb">';
+  html += '<h3 style="font-size:16px;font-weight:600;color:#1f2937;margin-bottom:12px">📥 导入进度</h3>';
+  html += '<textarea id="import-textarea" placeholder="粘贴备份字符串..." style="width:100%;height:80px;padding:10px;border:1px solid #d1d5db;border-radius:8px;font-size:12px;resize:none"></textarea>';
+  html += '<button id="btn-import" style="margin-top:8px;padding:10px 24px;border:none;border-radius:8px;background:#10b981;color:#fff;font-size:14px;cursor:pointer;touch-action:manipulation">导入恢复</button>';
+  html += '</div>';
+
+  // Reset
+  html += '<div style="background:#fff;border-radius:12px;padding:16px;margin-bottom:12px;border:1px solid #fca5a5">';
+  html += '<h3 style="font-size:16px;font-weight:600;color:#dc2626;margin-bottom:8px">⚠️ 重置所有进度</h3>';
+  html += '<p style="font-size:13px;color:#6b7280;margin-bottom:8px">此操作将清除所有学习进度，不可恢复。建议先导出备份。</p>';
+  html += '<button id="btn-reset" style="padding:8px 20px;border:1px solid #dc2626;border-radius:8px;background:#fff;color:#dc2626;font-size:14px;cursor:pointer;touch-action:manipulation">重置进度</button>';
+  html += '</div>';
+
+  // Version info
+  html += '<div style="text-align:center;padding:16px;color:#9ca3af;font-size:12px">';
+  html += '<p>雅思备考助手 v1.0</p>';
+  html += '<p>语音合成: ' + (_FEATURES.speechSynthesis ? '✅ 支持' : '❌ 不支持') + '</p>';
+  html += '<p>网络状态: ' + (navigator.onLine ? '✅ 在线' : '⚠️ 离线') + '</p>';
+  html += '<button id="btn-faq-link" style="margin-top:8px;background:none;border:none;color:#4F46E5;font-size:13px;cursor:pointer;text-decoration:underline">❓ 常见问题</button>';
+  html += '</div>';
+
+  html += '</div>';
+
+  container.innerHTML = html;
+
+  // Speed buttons
+  var speedBtns = container.querySelectorAll('.speed-btn');
+  for (var sb = 0; sb < speedBtns.length; sb++) {
+    speedBtns[sb].addEventListener('click', function() {
+      var spVal = parseFloat(this.getAttribute('data-speed'));
+      updateState('settings.audioSpeed', spVal);
+      var all = container.querySelectorAll('.speed-btn');
+      for (var a = 0; a < all.length; a++) {
+        all[a].style.border = '1px solid #d1d5db';
+        all[a].style.background = '#fff';
+        all[a].style.color = '#374151';
+      }
+      this.style.border = '2px solid #4F46E5';
+      this.style.background = '#eef2ff';
+      this.style.color = '#4f46e5';
+    });
+  }
+
+  // Auto-next checkbox
+  var autoNextCb = document.getElementById('setting-auto-next');
+  if (autoNextCb) {
+    autoNextCb.addEventListener('change', function() {
+      updateState('settings.autoNext', this.checked);
+    });
+  }
+
+  // Audio enabled checkbox
+  var audioCb = document.getElementById('setting-audio-enabled');
+  if (audioCb) {
+    audioCb.addEventListener('change', function() {
+      updateState('settings.audioEnabled', this.checked);
+    });
+  }
+
+  // Export button
+  var btnExport = document.getElementById('btn-export');
+  var exportTa = document.getElementById('export-textarea');
+  var btnCopy = document.getElementById('btn-copy-export');
+  if (btnExport && exportTa && btnCopy) {
+    btnExport.addEventListener('click', function() {
+      var exported = APP.exportProgress();
+      if (exported) {
+        exportTa.style.display = 'block';
+        exportTa.value = exported;
+        btnCopy.style.display = 'block';
+        APP.showToast('✅ 备份已生成，请复制保存', 'success', 3000);
+      } else {
+        APP.showToast('导出失败，请重试', 'error', 3000);
+      }
+    });
+    btnCopy.addEventListener('click', function() {
+      exportTa.select();
+      try { document.execCommand('copy'); } catch(e) {}
+      APP.showToast('✅ 已复制到剪贴板', 'success', 2000);
+    });
+  }
+
+  // Import button
+  var btnImport = document.getElementById('btn-import');
+  var importTa = document.getElementById('import-textarea');
+  if (btnImport && importTa) {
+    btnImport.addEventListener('click', function() {
+      var val = importTa.value.trim();
+      if (!val) {
+        APP.showToast('请先粘贴备份字符串', 'info', 3000);
+        return;
+      }
+      APP.showModal('确认导入', '<p style="font-size:14px">导入将覆盖当前进度，确定继续？</p>', {
+        confirmText: '确认导入',
+        onConfirm: function() {
+          var result = APP.importProgress(val);
+          if (result.success) {
+            APP.showToast('✅ 进度已恢复！', 'success', 3000);
+            importTa.value = '';
+            location.hash = '#/home';
+          } else {
+            APP.showToast(result.error || '导入失败', 'error', 4000);
+          }
+        }
+      });
+    });
+  }
+
+  // Reset button
+  var btnReset = document.getElementById('btn-reset');
+  if (btnReset) {
+    btnReset.addEventListener('click', function() {
+      APP.showModal('⚠️ 确认重置', '<p style="font-size:14px;color:#dc2626">此操作将清除所有学习进度，不可恢复。</p><p style="font-size:13px;color:#6b7280;margin-top:8px">建议先导出备份。</p>', {
+        confirmText: '确认重置',
+        onConfirm: function() {
+          AppState = JSON.parse(JSON.stringify(DEFAULT_STATE));
+          Storage.clear();
+          schedulePersist();
+          _refreshHomeProgress();
+          _updateStreakBadge();
+          APP.showToast('已重置所有进度', 'info', 3000);
+          location.hash = '#/home';
+        }
+      });
+    });
+  }
+
+  // FAQ link
+  var faqLink = document.getElementById('btn-faq-link');
+  if (faqLink) {
+    faqLink.addEventListener('click', function() { APP.navigateTo('faq'); });
+  }
+}
+
+APP.onRoute('settings', function(subPage, subId) {
+  renderSettings(subPage, subId);
+});
+
+// ============================================================
+// Part 24: FAQ Renderer
+// ============================================================
+function renderFaq(subPage, subId) {
+  var container = document.getElementById('faq-content');
+  if (!container) return;
+
+  var faqs = [
+    { q: '如何使用这个网站？', a: '每天打开页面，按照当天的学习计划完成听力、阅读、写作、口语四个模块的任务。完成一项任务后点击打勾标记为已完成。建议每天学习 1-2 小时。' },
+    { q: '进度会丢失吗？', a: '进度保存在浏览器的本地存储中。只要不清除浏览器数据（或微信缓存），进度就不会丢失。建议定期使用设置页的"导出备份"功能备份进度。' },
+    { q: '换手机了怎么迁移进度？', a: '在旧手机上进入设置页，点击"导出备份"并复制备份字符串。在新手机上进入设置页，粘贴到导入框并点击"导入恢复"。' },
+    { q: '为什么点击播放按钮没声音？', a: '本网站使用浏览器的语音合成功能朗读单词。部分浏览器（如安卓微信内置浏览器）不支持此功能。建议在设置中查看语音合成状态。如果显示不支持，可以复制单词到翻译软件中查看发音。' },
+    { q: '可以在微信中使用吗？', a: '可以。将链接发送到微信中，直接点击打开即可使用。建议添加到微信收藏，方便随时打开。' },
+    { q: '学习内容会更新吗？', a: '目前为 8 周系统备考计划的第一版。如需更多内容，请在设置中导出备份后等待更新。' },
+    { q: '我的数据安全吗？', a: '所有数据存储在您自己的设备上，不会上传到任何服务器。不同设备/微信账号之间数据完全独立。' },
+    { q: '可以离线使用吗？', a: '在首次加载页面后会缓存到浏览器。之后即使没有网络，已加载的内容也可以正常浏览。但语音合成需要浏览器引擎支持。' }
+  ];
+
+  var html = '<div style="max-width:600px;margin:0 auto">';
+  for (var i = 0; i < faqs.length; i++) {
+    html += createCollapsiblePanel(faqs[i].q, '<div style="line-height:1.7;font-size:14px;color:#4b5563">' + faqs[i].a + '</div>', i === 0).outerHTML;
+  }
+  html += '<div style="text-align:center;padding:16px;margin-top:16px">';
+  html += '<p style="color:#9ca3af;font-size:12px;margin-bottom:4px">还有问题？</p>';
+  html += '<p style="color:#6b7280;font-size:13px">请确认以上常见问题，或联系开发者获取帮助。</p>';
+  html += '</div></div>';
+
+  container.innerHTML = html;
+}
+
+APP.onRoute('faq', function(subPage, subId) {
+  renderFaq(subPage, subId);
+});
+
+// ============================================================
+// Part 25: Onboarding Overlay
+// ============================================================
+function _showOnboarding() {
+  if (AppState && AppState.onboardingDone) return;
+  var overlay = document.createElement('div');
+  overlay.id = 'onboarding-overlay';
+  overlay.style.cssText = 'position:fixed;inset:0;background:rgba(0,0,0,.7);z-index:200;display:flex;align-items:center;justify-content:center;padding:20px';
+
+  var steps = [
+    {
+      icon: '📚',
+      title: '欢迎使用雅思备考助手',
+      desc: '8周系统备考计划，覆盖听说读写四大模块，助你高效备考雅思。'
+    },
+    {
+      icon: '✅',
+      title: '每日完成任务打勾',
+      desc: '按照周计划每天学习，完成一项任务后点击打勾标记进度。坚持就是胜利！'
+    },
+    {
+      icon: '💾',
+      title: '定期备份学习进度',
+      desc: '记得在设置页定期导出备份。换设备时可以通过导入功能恢复所有进度。'
+    }
+  ];
+
+  var currentStep = 0;
+  var box = document.createElement('div');
+  box.style.cssText = 'background:#fff;border-radius:20px;padding:32px 24px;max-width:360px;width:100%;text-align:center;box-shadow:0 20px 60px rgba(0,0,0,.2)';
+
+  function renderStep(idx) {
+    var s = steps[idx];
+    var h = '';
+    h += '<div style="font-size:56px;margin-bottom:12px">' + s.icon + '</div>';
+    h += '<h2 style="font-size:20px;font-weight:700;color:#1f2937;margin-bottom:8px">' + s.title + '</h2>';
+    h += '<p style="font-size:14px;color:#6b7280;line-height:1.6;margin-bottom:24px">' + s.desc + '</p>';
+    h += '<div style="display:flex;gap:8px;justify-content:center;margin-bottom:20px">';
+    for (var d = 0; d < steps.length; d++) {
+      h += '<div style="width:8px;height:8px;border-radius:50%;background:' + (d === idx ? '#4F46E5' : '#d1d5db') + '"></div>';
+    }
+    h += '</div>';
+    if (idx < steps.length - 1) {
+      h += '<div style="display:flex;gap:8px">';
+      h += '<button id="onboard-skip" style="flex:1;padding:10px;border:1px solid #d1d5db;border-radius:10px;background:#fff;color:#9ca3af;font-size:14px;cursor:pointer">跳过</button>';
+      h += '<button id="onboard-next" style="flex:1;padding:10px;border:none;border-radius:10px;background:#4F46E5;color:#fff;font-size:14px;cursor:pointer">下一步 →</button>';
+      h += '</div>';
+    } else {
+      h += '<button id="onboard-done" style="width:100%;padding:12px;border:none;border-radius:10px;background:#10b981;color:#fff;font-size:16px;font-weight:600;cursor:pointer">开始学习！🚀</button>';
+    }
+    return h;
+  }
+
+  function updateStep() {
+    box.innerHTML = renderStep(currentStep);
+    _bindOnboardingButtons();
+  }
+
+  function _bindOnboardingButtons() {
+    var skipBtn = document.getElementById('onboard-skip');
+    var nextBtn = document.getElementById('onboard-next');
+    var doneBtn = document.getElementById('onboard-done');
+
+    if (skipBtn) {
+      skipBtn.addEventListener('click', function() { closeOnboarding(); });
+    }
+    if (nextBtn) {
+      nextBtn.addEventListener('click', function() {
+        currentStep++;
+        updateStep();
+      });
+    }
+    if (doneBtn) {
+      doneBtn.addEventListener('click', function() { closeOnboarding(); });
+    }
+  }
+
+  function closeOnboarding() {
+    updateState('onboardingDone', true);
+    overlay.style.opacity = '0';
+    overlay.style.transition = 'opacity .3s';
+    setTimeout(function() {
+      if (overlay.parentNode) { overlay.parentNode.removeChild(overlay); }
+    }, 300);
+  }
+
+  box.innerHTML = renderStep(0);
+  overlay.appendChild(box);
+  document.body.appendChild(overlay);
+  _bindOnboardingButtons();
+}
+
+// Register home route handler
+APP.onRoute('home', function(subPage, subId) {
+  _refreshHomeProgress();
+});
+
+// ============================================================
+// Part 26: Collapsible Panel Re-wire Helper
+// Used after setting innerHTML, re-attach click handlers to collapsible headers
+// ============================================================
+function _rewireCollapsiblePanels(container) {
+  var headers = container.querySelectorAll('[style*="cursor:pointer"][style*="justify-content:space-between"]');
+  for (var i = 0; i < headers.length; i++) {
+    (function(header) {
+      // Check if already wired
+      if (header.getAttribute('data-wired') === '1') return;
+      header.setAttribute('data-wired', '1');
+      header.addEventListener('click', function() {
+        var body = header.nextElementSibling;
+        if (!body) return;
+        var arrow = header.querySelector('.panel-arrow');
+        var isOpen = body.style.maxHeight !== '0px' && body.style.maxHeight !== '0';
+        if (isOpen) {
+          body.style.maxHeight = '0';
+          body.style.padding = '0 16px';
+          if (arrow) arrow.style.transform = 'rotate(0deg)';
+        } else {
+          body.style.maxHeight = '2000px';
+          body.style.padding = '0 16px';
+          if (arrow) arrow.style.transform = 'rotate(180deg)';
+        }
+      });
+    })(headers[i]);
+  }
+}
+
+// ============================================================
+// Part 0: Startup — wait for DOMContentLoaded, then init
+// ============================================================
+document.addEventListener('DOMContentLoaded', function() {
+  loadStateFromStorage();
+  APP.init();
+  _updateStreakBadge();
+
+  // Show onboarding on first visit
+  if (!AppState.onboardingDone) {
+    setTimeout(function() { _showOnboarding(); }, 500);
+  }
+
+  // Offline warning
+  if (!navigator.onLine) {
+    setTimeout(function() {
+      APP.showToast('当前无网络，部分音频可能无法播放', 'info', 5000);
+    }, 1000);
+  }
+});
+</script>
+
+</body>
+</html>
